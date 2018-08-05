@@ -1,0 +1,23 @@
+connection:
+  server:
+    host: pay-server
+    port: 8761
+    port-node: 8762
+
+eureka:
+  instance:
+    hostname: pay-app
+  client:
+    service-url:
+      defaultZone: http://${connection.server.host}:${connection.server.port}/eureka/
+server:
+  port: 8092
+spring:
+  application:
+    name: pay-app
+
+feign:
+  client:
+    node:
+      alipay: pay-alipay
+      weixin: pay-weixin

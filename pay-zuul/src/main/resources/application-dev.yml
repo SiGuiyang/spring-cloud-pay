@@ -1,0 +1,23 @@
+
+connection:
+  server:
+    port: 8761
+
+server:
+  port: 8099
+spring:
+  application:
+    name: pay-zuul
+eureka:
+  instance:
+    hostname: pay-zuul
+  client:
+    service-url:
+      defaultZone: http://localhost:${connection.server.port}/eureka/
+
+zuul:
+  ignored-services: '*'
+  routes:
+    users:
+      path: /test/**
+      serviceId: https://www.baidu.com/

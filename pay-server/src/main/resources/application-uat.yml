@@ -1,0 +1,16 @@
+server:
+  port: 8761
+  port-node: 8762
+
+eureka:
+  instance:
+    hostname: pay-server
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port-node}/eureka/
+spring:
+  application:
+    name: pay-server
+#logging:
+#  level:
+#    org.springframework: debug

@@ -1,0 +1,16 @@
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: pay-server
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+spring:
+  application:
+    name: pay-server

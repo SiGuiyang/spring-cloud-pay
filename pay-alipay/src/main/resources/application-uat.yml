@@ -1,0 +1,25 @@
+
+connection:
+  server:
+    port: 8761
+    port-node: 8762
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:${connection.server.port-node}/eureka/, http://localhost:${connection.server.port}/eureka/
+  instance:
+    hostname: pay-alipay
+
+server:
+  port: 8091
+spring:
+  application:
+    name: pay-alipay
+logging:
+  level:
+    quick.pager.pay: info
+    com.netflix.discovery: debug
+    org.apache.ibatis: error
+    org.springframework: info
+  file: logs/pay-alipay.log
