@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="quick.pager.pay.mapper.user.UserMapper">
+    <resultMap id="BaseResultMap" type="quick.pager.pay.model.user.User">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="server_status" property="serverStatus" jdbcType="INTEGER"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="gender" property="gender" jdbcType="VARCHAR"/>
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="delete_status" property="deleteStatus" jdbcType="BIT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, username, mobile, password,server_status, gender, age, birthday, create_time, update_time,
+        delete_status
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from t_user
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insertSelective" parameterType="quick.pager.pay.model.user.User">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="serverStatus != null">
+                server_status,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="deleteStatus != null">
+                delete_status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="serverStatus != null">
+                #{serverStatus,jdbcType=INTEGER},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteStatus != null">
+                #{deleteStatus,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="quick.pager.pay.model.user.User">
+        update t_user
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="serverStatus">
+                server_status = #{serverStatus,jdbcType=INTEGER},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteStatus != null">
+                delete_status = #{deleteStatus,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectUserByUsernameOrMobile" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from t_user
+      where
+        delete_status  = false
+        <if test="mobileFlag == 1">
+           and mobile = #{username,jdbcType=VARCHAR}
+        </if>
+        <if test="mobileFlag == 0">
+           and username = #{username,jdbcType=VARCHAR}
+        </if>
+
+    </select>
+
+    <select id="selectUser" resultType="quick.pager.pay.vo.UserVO">
+      select
+        t.id AS userId,
+        t.username,
+        t.mobile,
+        t.password,
+        t.server_status AS serverStatus,
+        t.gender,
+        t.age,
+        t.birthday,
+        t.create_time AS createTime,
+        t.update_time AS updateTime,
+        t.delete_status AS deleteStatus,
+        r.id AS roleId,
+        r.role_name AS roleName
+        from t_user t left join t_user_role ur on t.id = ur.user_id left join t_role r on ur.role_id = r.id
+        <where>
+            t.delete_status  = false
+          <if test="username != null">
+              and t.username like concat('%',#{username},'%')
+          </if>
+            <if test="beginTime != null">
+                and t.create_time &gt;= #{beginTime}
+            </if>
+            <if test="endTime != null">
+                and t.create_time &lt;= #{endTime}
+            </if>
+        </where>
+        order by t.id desc
+    </select>
+
+    <select id="selectByUser" resultType="quick.pager.pay.vo.UserVO">
+        select
+        t.id AS userId,
+        t.username,
+        t.mobile,
+        t.password,
+        t.server_status AS serverStatus,
+        t.gender,
+        t.age,
+        t.birthday,
+        t.create_time AS createTime,
+        t.update_time AS updateTime,
+        t.delete_status AS deleteStatus,
+        r.id AS roleId,
+        r.role_name AS roleName
+        from t_user t left join t_user_role ur on t.id = ur.user_id left join t_role r on ur.role_id = r.id
+        <where>
+            t.id = #{userId,jdbcType=INTEGER}
+        </where>
+    </select>
+
+</mapper>

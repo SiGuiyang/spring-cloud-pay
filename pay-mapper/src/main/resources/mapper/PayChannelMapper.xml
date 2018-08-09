@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="quick.pager.pay.mapper.PayChannelMapper">
+  <resultMap id="BaseResultMap" type="quick.pager.pay.model.PayChannel">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="pay_channel_center_id" jdbcType="BIGINT" property="payChannelCenterId" />
+    <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="mch_id" jdbcType="VARCHAR" property="mchId" />
+    <result column="secure_key" jdbcType="VARCHAR" property="secureKey" />
+    <result column="current_node" jdbcType="BIT" property="currentNode" />
+    <result column="current_enable" jdbcType="BIT" property="currentEnable" />
+    <result column="rate" jdbcType="DECIMAL" property="rate" />
+    <result column="deduction" jdbcType="DECIMAL" property="deduction" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pay_channel_center_id, channel_name, app_id, open_id, mch_id, secure_key, current_node,
+    current_enable, rate, deduction, create_time, update_time, delete_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_pay_channel
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_pay_channel
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="quick.pager.pay.model.PayChannel">
+    insert into t_pay_channel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="payChannelCenterId != null">
+        pay_channel_center_id,
+      </if>
+      <if test="channelName != null">
+        channel_name,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="mchId != null">
+        mch_id,
+      </if>
+      <if test="secureKey != null">
+        secure_key,
+      </if>
+      <if test="currentNode != null">
+        current_node,
+      </if>
+      <if test="currentEnable != null">
+        current_enable,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+      <if test="deduction != null">
+        deduction,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="payChannelCenterId != null">
+        #{payChannelCenterId,jdbcType=BIGINT},
+      </if>
+      <if test="channelName != null">
+        #{channelName,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchId != null">
+        #{mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="secureKey != null">
+        #{secureKey,jdbcType=VARCHAR},
+      </if>
+      <if test="currentNode != null">
+        #{currentNode,jdbcType=BIT},
+      </if>
+      <if test="currentEnable != null">
+        #{currentEnable,jdbcType=BIT},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="deduction != null">
+        #{deduction,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="quick.pager.pay.model.PayChannel">
+    update t_pay_channel
+    <set>
+      <if test="payChannelCenterId != null">
+        pay_channel_center_id = #{payChannelCenterId,jdbcType=BIGINT},
+      </if>
+      <if test="channelName != null">
+        channel_name = #{channelName,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchId != null">
+        mch_id = #{mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="secureKey != null">
+        secure_key = #{secureKey,jdbcType=VARCHAR},
+      </if>
+      <if test="currentNode != null">
+        current_node = #{currentNode,jdbcType=BIT},
+      </if>
+      <if test="currentEnable != null">
+        current_enable = #{currentEnable,jdbcType=BIT},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="deduction != null">
+        deduction = #{deduction,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteStatus != null">
+        delete_status = #{deleteStatus,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectPayChannel" resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List"/>
+      from t_pay_channel
+      <where>
+        delete_status = 0
+        <if test="payChannelCenterId != null">
+          and pay_channel_center_id = #{payChannelCenterId,jdbcType=BIGINT}
+        </if>
+        <if test="channelName != null and channelName != ''">
+          and channel_name = #{channelName,jdbcType=VARCHAR}
+        </if>
+      </where>
+    order by id desc
+  </select>
+
+</mapper>

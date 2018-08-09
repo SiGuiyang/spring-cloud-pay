@@ -14,7 +14,7 @@ public class Request implements Serializable {
     private static final long serialVersionUID = 2245472883226265132L;
 
     @ApiModelProperty(value = "Id")
-    private Integer id;
+    private Long id;
     @ApiModelProperty(value = "起始时间")
     private long beginTime;
     @ApiModelProperty(value = "结束时间")
@@ -27,5 +27,9 @@ public class Request implements Serializable {
     private String merchantOrderCode;
     @ApiModelProperty(value = "版本号")
     private String version;
+    @ApiModelProperty(value = "一页的大小")
+    private Integer pageSize;
+    @ApiModelProperty(value = "页码")
+    private Integer pageNum;
 
 }

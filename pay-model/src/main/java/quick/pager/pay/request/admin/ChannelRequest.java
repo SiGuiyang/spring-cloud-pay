@@ -42,4 +42,6 @@ public class ChannelRequest extends Request{
     private String payType;
     @ApiModelProperty("创建人")
     private String operationUserName;
+    @ApiModelProperty(value ="服务状态")
+    private Integer serverStatus;
 }

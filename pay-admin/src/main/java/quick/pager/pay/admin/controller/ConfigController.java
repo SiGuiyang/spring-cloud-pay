@@ -26,6 +26,8 @@ public class ConfigController {
     @PostMapping("/config/list")
     public Response configList(ConfigRequest request) {
         ConfigDto dto = new ConfigDto();
+        dto.setBeginTime(request.getBeginTime());
+        dto.setEndTime(request.getEndTime());
         dto.setConfigName(request.getConfigName());
         dto.setConfigValue(request.getConfigValue());
         dto.setDescription(request.getDescription());
@@ -38,10 +40,7 @@ public class ConfigController {
     @PostMapping("/config/info")
     public Response configInfo(ConfigRequest request) {
         ConfigDto dto = new ConfigDto();
-        dto.setConfigName(request.getConfigName());
-        dto.setConfigValue(request.getConfigValue());
-        dto.setDescription(request.getDescription());
-        dto.setSequence(request.getSequence());
+        dto.setId(request.getId());
         dto.setOperation(Constants.Operation.select);
         return configService.doService(dto);
     }

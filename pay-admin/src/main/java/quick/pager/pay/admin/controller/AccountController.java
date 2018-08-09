@@ -96,7 +96,13 @@ public class AccountController {
 
     @PostMapping("/logout")
     @ApiOperation("退出登陆")
-    public Response logout() {
-        return new Response();
+    public Response logout(String token) {
+        if (StringUtils.isEmpty(token)) {
+            return new Response(ResponseStatus.PARAMETER_ERROR.code, ResponseStatus.PARAMETER_ERROR.msg);
+        }
+
+        TokenDto dto = new TokenDto();
+        dto.setToken(token);
+        return userLogoutService.doService(dto);
     }
 }

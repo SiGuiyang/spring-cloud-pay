@@ -24,9 +24,22 @@ public class MerchantController {
     @ApiModelProperty("商户列表")
     @PostMapping("/merchant/list")
     public Response queryMerchantList(MerchantRequest request) {
+
         MerchantDto dto = new MerchantDto();
-        
+
+        dto.setMobile(request.getMobile());
+        dto.setBankName(request.getBankName());
+        dto.setIdCard(request.getIdCard());
+        dto.setBankNum(request.getBankNum());
+        dto.setHighQuality(request.getHighQuality());
+        dto.setMerchantNo(request.getMerchantNo());
+        dto.setPageSize(request.getPageSize());
+        dto.setPageNum(request.getPageNum());
+
+        dto.setBeginTime(request.getBeginTime());
+        dto.setEndTime(request.getEndTime());
         dto.setOperation(Constants.Operation.list);
+
         return merchantService.doService(dto);
     }
 
@@ -38,7 +51,7 @@ public class MerchantController {
         }
 
         MerchantDto dto = new MerchantDto();
-
+        dto.setMerchantNo(request.getMerchantNo());
         dto.setOperation(Constants.Operation.select);
         
         return merchantService.doService(dto);
@@ -52,6 +65,25 @@ public class MerchantController {
         }
 
         MerchantDto dto = new MerchantDto();
+
+        dto.setId(request.getId());
+        dto.setMobile(request.getMobile());
+        dto.setBankName(request.getBankName());
+        dto.setIdCard(request.getIdCard());
+        dto.setBankNum(request.getBankNum());
+        dto.setHighQuality(request.getHighQuality());
+        dto.setMerchantNo(request.getMerchantNo());
+        dto.setAddress(request.getAddress());
+        dto.setContractName(request.getContractName());
+        dto.setDeduction(request.getDeduction());
+        dto.setIdCardBehind(request.getIdCardBehind());
+        dto.setIdCardFront(request.getIdCardFront());
+        dto.setLicense(request.getLicense());
+        dto.setMerchantName(request.getMerchantName());
+        dto.setPassword(request.getPassword());
+        dto.setPrivateKey(request.getPrivateKey());
+        dto.setPublicKey(request.getPublicKey());
+        dto.setRate(request.getRate());
 
         dto.setOperation(Constants.Operation.update);
 
@@ -68,8 +100,9 @@ public class MerchantController {
 
         MerchantDto dto = new MerchantDto();
 
+        dto.setMerchantNo(request.getMerchantNo());
+        dto.setId(request.getId());
         dto.setOperation(Constants.Operation.delete);
-
 
         return merchantService.doService(dto);
     }

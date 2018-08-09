@@ -24,7 +24,20 @@ public class OrderController {
     @ApiOperation("订单列表")
     @PostMapping("/order/list")
     public Response orderList(OrderRequest request) {
+
         OrderDto dto = new OrderDto();
+        dto.setMerchantNo(request.getMerchantNo());
+        dto.setOrderCode(request.getOrderCode());
+        dto.setMerchantOrderCode(request.getMerchantOrderCode());
+        dto.setPayStatus(request.getPayStatus());
+        dto.setBeginTime(request.getBeginTime());
+        dto.setEndTime(request.getEndTime());
+        dto.setPayType(request.getPayType());
+        dto.setNotificationStatus(request.getNotificationStatus());
+        dto.setTradeCode(request.getTradeCode());
+        dto.setPageNum(request.getPageNum());
+        dto.setPageSize(request.getPageSize());
+
         dto.setOperation(Constants.Operation.list);
 
         return orderService.doService(dto);

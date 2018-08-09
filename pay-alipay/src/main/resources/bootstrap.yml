@@ -1,0 +1,16 @@
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8099/
+      label: master
+      profile: dev
+  application:
+    name: pay-alipay
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: refresh,health,info

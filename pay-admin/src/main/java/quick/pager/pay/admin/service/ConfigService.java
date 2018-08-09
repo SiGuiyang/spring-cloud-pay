@@ -2,6 +2,7 @@ package quick.pager.pay.admin.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -21,6 +22,7 @@ import java.util.List;
  * 系统配置项
  */
 @Service
+@Slf4j
 public class ConfigService implements IService {
 
     @Autowired

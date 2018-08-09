@@ -12,6 +12,7 @@ import quick.pager.pay.admin.service.ChannelService;
 import quick.pager.pay.admin.service.ChannelTypeService;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
+import quick.pager.pay.dto.admin.ChannelCenterDto;
 import quick.pager.pay.dto.admin.ChannelDto;
 import quick.pager.pay.request.admin.ChannelRequest;
 import quick.pager.pay.response.Response;
@@ -31,9 +32,10 @@ public class ChannelController {
     @ApiOperation("支付中心列表")
     @PostMapping("/channel/center/list")
     public Response channelCenterList(ChannelRequest request) {
-        ChannelDto dto = new ChannelDto();
-        dto.setAppId(request.getAppId());
+        ChannelCenterDto dto = new ChannelCenterDto();
         dto.setChannelCenterName(request.getChannelCenterName());
+        dto.setPayType(request.getPayType());
+        dto.setServerStatus(request.getServerStatus());
         dto.setOperation(Constants.Operation.list);
         return channelCenterService.doService(dto);
     }
@@ -54,8 +56,8 @@ public class ChannelController {
             return new Response(ResponseStatus.PARAMETER_ERROR.code, ResponseStatus.PARAMETER_ERROR.msg);
         }
 
-        ChannelDto dto = new ChannelDto();
-        dto.setAppId(request.getAppId());
+        ChannelCenterDto dto = new ChannelCenterDto();
+        dto.setId(request.getId());
         dto.setOperation(Constants.Operation.select);
         return channelCenterService.doService(dto);
     }
@@ -64,8 +66,10 @@ public class ChannelController {
     @PostMapping("/channel/center/modify")
     public Response modifyChannelCenter(ChannelRequest request) {
 
-        ChannelDto dto = new ChannelDto();
-        dto.setAppId(request.getAppId());
+        ChannelCenterDto dto = new ChannelCenterDto();
+        dto.setId(request.getId());
+
+
         dto.setOperation(Constants.Operation.update);
 
         return channelCenterService.doService(dto);
@@ -79,7 +83,7 @@ public class ChannelController {
         }
 
         ChannelDto dto = new ChannelDto();
-        dto.setAppId(request.getAppId());
+        dto.setId(request.getId());
         dto.setOperation(Constants.Operation.delete);
 
         return channelCenterService.doService(dto);
@@ -94,6 +98,8 @@ public class ChannelController {
         ChannelDto dto = new ChannelDto();
         dto.setAppId(request.getAppId());
         dto.setChannelCenterName(request.getChannelCenterName());
+        dto.setEndTime(request.getEndTime());
+        dto.setBeginTime(request.getBeginTime());
         dto.setOperation(Constants.Operation.list);
         return channelService.doService(dto);
 
@@ -107,6 +113,7 @@ public class ChannelController {
             return new Response(ResponseStatus.PARAMETER_ERROR.code, ResponseStatus.PARAMETER_ERROR.msg);
         }
         ChannelDto dto = new ChannelDto();
+        dto.setId(request.getId());
         dto.setAppId(request.getAppId());
         dto.setChannelCenterName(request.getChannelCenterName());
         dto.setOperation(Constants.Operation.select);
@@ -119,10 +126,20 @@ public class ChannelController {
         if (ObjectUtils.isEmpty(request)) {
             return new Response(ResponseStatus.PARAMETER_ERROR.code, ResponseStatus.PARAMETER_ERROR.msg);
         }
+
         ChannelDto dto = new ChannelDto();
         dto.setAppId(request.getAppId());
-        dto.setChannelCenterName(request.getChannelCenterName());
+        dto.setOpenId(request.getOpenId());
+        dto.setMchId(request.getMchId());
+        dto.setChannelName(request.getChannelName());
+        dto.setCurrentEnable(request.getCurrentEnable());
+        dto.setCurrentNode(request.getCurrentNode());
+        dto.setDeduction(request.getDeduction());
+        dto.setRate(request.getRate());
+        dto.setSecureKey(request.getSecureKey());
+        dto.setPayChannelCenterId(request.getPayChannelCenterId());
         dto.setOperation(Constants.Operation.update);
+
         return channelService.doService(dto);
     }
 
@@ -133,8 +150,8 @@ public class ChannelController {
             return new Response(ResponseStatus.PARAMETER_ERROR.code, ResponseStatus.PARAMETER_ERROR.msg);
         }
         ChannelDto dto = new ChannelDto();
-        dto.setAppId(request.getAppId());
-        dto.setChannelCenterName(request.getChannelCenterName());
+        dto.setId(request.getId());
+        dto.setChannelName(request.getChannelName());
         dto.setOperation(Constants.Operation.delete);
         return channelService.doService(dto);
     }
