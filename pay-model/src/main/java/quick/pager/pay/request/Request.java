@@ -27,6 +27,8 @@ public class Request implements Serializable {
     private String merchantOrderCode;
     @ApiModelProperty(value = "版本号")
     private String version;
+    @ApiModelProperty(value ="服务状态")
+    private Integer serverStatus;
     @ApiModelProperty(value = "一页的大小")
     private Integer pageSize;
     @ApiModelProperty(value = "页码")

@@ -2,8 +2,10 @@ package quick.pager.pay.dto.admin;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import quick.pager.pay.dto.BaseDto;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class MerchantDto extends BaseDto{
     private static final long serialVersionUID = -2035978323993000223L;

@@ -16,6 +16,8 @@ public class BaseDto implements Serializable {
 
     @ApiModelProperty(value = "Id")
     private Long id;
+    @ApiModelProperty(value ="服务状态")
+    private Integer serverStatus;
     @ApiModelProperty(value = "起始时间")
     private long beginTime;
     @ApiModelProperty(value = "结束时间")

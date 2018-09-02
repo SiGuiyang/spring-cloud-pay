@@ -2,10 +2,12 @@ package quick.pager.pay.dto.admin;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import quick.pager.pay.dto.BaseDto;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class PermissionDto extends BaseDto{
     private static final long serialVersionUID = -8834560366116141596L;

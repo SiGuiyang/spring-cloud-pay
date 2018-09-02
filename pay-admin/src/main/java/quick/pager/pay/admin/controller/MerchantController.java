@@ -3,6 +3,7 @@ package quick.pager.pay.admin.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import quick.pager.pay.response.Response;
 @Api(description = "商户管理")
 public class MerchantController {
 
+    @Autowired
     private MerchantService merchantService;
 
     @ApiModelProperty("商户列表")
@@ -53,7 +55,7 @@ public class MerchantController {
         MerchantDto dto = new MerchantDto();
         dto.setMerchantNo(request.getMerchantNo());
         dto.setOperation(Constants.Operation.select);
-        
+        dto.setId(request.getId());
         return merchantService.doService(dto);
     }
 

@@ -16,6 +16,7 @@
         <fastjson.version>1.2.47</fastjson.version>
         <guava.version>20.0</guava.version>
         <qiniu.version>7.2.11</qiniu.version>
+        <druid.version>1.1.8</druid.version>
         <alipay.version>3.0.52.ALL</alipay.version>
         <happy.version>0.1.4</happy.version>
         <httpclient.version>4.5.5</httpclient.version>
@@ -58,6 +59,12 @@
                 <groupId>com.thoughtworks.xstream</groupId>
                 <artifactId>xstream</artifactId>
                 <version>${xstream.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
             </dependency>
 
             <dependency>

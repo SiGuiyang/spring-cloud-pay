@@ -10,6 +10,8 @@ import java.io.Serializable;
 public class VO implements Serializable {
     private static final long serialVersionUID = -794393367823849536L;
 
+    private long id;
+
     private String beginTime;
 
     private String endTime;

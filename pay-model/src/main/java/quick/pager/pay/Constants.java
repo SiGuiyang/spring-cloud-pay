@@ -27,6 +27,7 @@ public interface Constants {
      * 操作模式
      */
     enum Operation{
+        permissions, // 赋予权限
         cache, //缓存
         list, // 列表
         select, // 查询

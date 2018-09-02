@@ -41,39 +41,6 @@ public class AccountController {
             return resp;
         }
 
-//        Subject subject = SecurityUtils.getSubject();
-//        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, SecureUtil.md5(password));
-//        try {
-//            subject.login(usernamePasswordToken);
-//            String token = subject.getSession().getId().toString();
-//
-//            User user = userService.getUser(username,Constants.Common.COMMON_ZERO);
-//            UserEvent event = new UserEvent();
-//            event.setAge(user.getAge());
-//            event.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
-//            event.setGender(user.getGender());
-//            event.setBirthday(user.getBirthday());
-//            event.setUsername(user.getUsername());
-//            event.setMobile(user.getMobile());
-//            event.setRoles(Arrays.asList("editor"));
-//            event.setToken(token);
-//            resp.setData(event);
-//        } catch (Exception e) {
-//            if (e instanceof UnknownAccountException) {
-//                resp.setCode(RespConstants.USER_NOT_EXISTS.code);
-//                resp.setMsg(RespConstants.USER_NOT_EXISTS.msg);
-//                return resp;
-//            } else if (e instanceof IncorrectCredentialsException) {
-//                resp.setCode(RespConstants.USERNAME_OR_PASSWORD_INCORRECT.code);
-//                resp.setMsg(RespConstants.USERNAME_OR_PASSWORD_INCORRECT.msg);
-//                return resp;
-//            } else {
-//                resp.setCode(RespConstants.SYSTEM_ERROR.code);
-//                resp.setMsg(RespConstants.SYSTEM_ERROR.msg);
-//                return resp;
-//            }
-//        }
-//        return resp;
         UserDto dto = new UserDto();
         dto.setUsername(request.getUsername());
         dto.setPassword(request.getPassword());
