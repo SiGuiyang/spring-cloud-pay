@@ -1,11 +1,16 @@
 package quick.pager.pay.common.client.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 统一下单
+ * @author siguiyang
  */
+@EqualsAndHashCode(callSuper = true)
 @XStreamAlias("xml")
+@Data
 public class WeiXinOrderRequest extends WeiXinBaseRequest {
 
     private static final long serialVersionUID = -5957460267959606864L;
@@ -52,77 +57,4 @@ public class WeiXinOrderRequest extends WeiXinBaseRequest {
 
     @XStreamAlias("openid")
     private String openId;
-
-    public String getDeviceInfo() {
-        return deviceInfo;
-    }
-
-    public void setDeviceInfo(String deviceInfo) {
-        this.deviceInfo = deviceInfo;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public String getOutTradeNo() {
-        return outTradeNo;
-    }
-
-    public void setOutTradeNo(String outTradeNo) {
-        this.outTradeNo = outTradeNo;
-    }
-
-    public Integer getTotalFee() {
-        return totalFee;
-    }
-
-    public void setTotalFee(Integer totalFee) {
-        this.totalFee = totalFee;
-    }
-
-    public String getSpbillCreateIp() {
-        return spbillCreateIp;
-    }
-
-    public void setSpbillCreateIp(String spbillCreateIp) {
-        this.spbillCreateIp = spbillCreateIp;
-    }
-
-
-    public String getNotifyUrl() {
-        return notifyUrl;
-    }
-
-    public void setNotifyUrl(String notifyUrl) {
-        this.notifyUrl = notifyUrl;
-    }
-
-    public String getTradeType() {
-        return tradeType;
-    }
-
-    public void setTradeType(String tradeType) {
-        this.tradeType = tradeType;
-    }
-
-    public String getSceneInfo() {
-        return sceneInfo;
-    }
-
-    public void setSceneInfo(String sceneInfo) {
-        this.sceneInfo = sceneInfo;
-    }
-
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId;
-    }
 }

@@ -23,7 +23,7 @@ public class TestController {
     private TestService testService;
 
     @RequestMapping("/spring/test")
-    @ApiOperation("测试spring service 是否连接")
+    @ApiOperation("测试spring client 是否连接")
     public Response test(Request request) {
         TestDto dto = new TestDto();
         dto.setBeginTime(request.getBeginTime());

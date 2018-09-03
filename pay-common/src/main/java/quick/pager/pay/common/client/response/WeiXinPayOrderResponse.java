@@ -1,8 +1,14 @@
 package quick.pager.pay.common.client.response;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
  * 统一下单
+ * @author siguiyang
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class WeiXinPayOrderResponse extends WeiXinBaseResponse {
 
     private static final long serialVersionUID = -3844198643371690228L;
@@ -28,35 +34,4 @@ public class WeiXinPayOrderResponse extends WeiXinBaseResponse {
      */
     private String mwebUrl;
 
-    public String getDeviceInfo() {
-        return deviceInfo;
-    }
-
-    public void setDeviceInfo(String deviceInfo) {
-        this.deviceInfo = deviceInfo;
-    }
-
-    public String getTradeType() {
-        return tradeType;
-    }
-
-    public void setTradeType(String tradeType) {
-        this.tradeType = tradeType;
-    }
-
-    public String getPrepayId() {
-        return prepayId;
-    }
-
-    public void setPrepayId(String prepayId) {
-        this.prepayId = prepayId;
-    }
-
-    public String getMwebUrl() {
-        return mwebUrl;
-    }
-
-    public void setMwebUrl(String mwebUrl) {
-        this.mwebUrl = mwebUrl;
-    }
 }

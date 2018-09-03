@@ -1,4 +1,4 @@
-package quick.pager.pay.common.client;
+package quick.pager.pay.response;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author siguiyang
  */
 @Data
-public class PayResponse<T> implements Serializable{
+public class PayResponse<T> implements Serializable {
     private static final long serialVersionUID = -6120197778709732868L;
 
     private int code;

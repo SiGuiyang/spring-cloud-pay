@@ -1,0 +1,1 @@
+package quick.pager.pay.app.client;

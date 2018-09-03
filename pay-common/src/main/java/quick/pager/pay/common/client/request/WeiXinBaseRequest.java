@@ -1,12 +1,15 @@
 package quick.pager.pay.common.client.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import lombok.Data;
 import quick.pager.pay.common.client.IRequest;
 
 
 /**
  * 微信请求入参基类
+ * @author siguiyang
  */
+@Data
 public class WeiXinBaseRequest implements IRequest {
     private static final long serialVersionUID = 8049847864320904740L;
     /**
@@ -34,44 +37,4 @@ public class WeiXinBaseRequest implements IRequest {
      */
     @XStreamAlias("sign_type")
     private String signType;
-
-    public String getAppId() {
-        return appId;
-    }
-
-    public void setAppId(String appId) {
-        this.appId = appId;
-    }
-
-    public String getMchId() {
-        return mchId;
-    }
-
-    public void setMchId(String mchId) {
-        this.mchId = mchId;
-    }
-
-    public String getNonceStr() {
-        return nonceStr;
-    }
-
-    public void setNonceStr(String nonceStr) {
-        this.nonceStr = nonceStr;
-    }
-
-    public String getSign() {
-        return sign;
-    }
-
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
-
-    public String getSignType() {
-        return signType;
-    }
-
-    public void setSignType(String signType) {
-        this.signType = signType;
-    }
 }

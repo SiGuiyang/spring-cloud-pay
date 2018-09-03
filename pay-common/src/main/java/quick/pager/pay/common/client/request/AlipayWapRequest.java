@@ -1,12 +1,19 @@
 package quick.pager.pay.common.client.request;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.math.BigDecimal;
 
 /**
  * 手机网站支付|h5支付
+ * @author siguiyang
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class AlipayWapRequest extends BaseAlipayRequest {
 
+    private static final long serialVersionUID = -4946720607358782059L;
     /**
      * 商品的标题/交易标题/订单标题/订单关键字等。
      */
@@ -31,52 +38,4 @@ public class AlipayWapRequest extends BaseAlipayRequest {
      * 销售产品码，商家和支付宝签约的产品码，为固定值QUICK_MSECURITY_PAY
      */
     private String productCode;
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public String getTimeoutExpress() {
-        return timeoutExpress;
-    }
-
-    public void setTimeoutExpress(String timeoutExpress) {
-        this.timeoutExpress = timeoutExpress;
-    }
-
-    public String getOutTradeNo() {
-        return outTradeNo;
-    }
-
-    public void setOutTradeNo(String outTradeNo) {
-        this.outTradeNo = outTradeNo;
-    }
-
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
 }

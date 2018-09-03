@@ -21,7 +21,8 @@ public enum ResponseStatus {
     ALIPAY_REQUEST_TYPE_EXCEPTION(211, "请求支付宝入参类型不匹配"),
     WEIXIN_REQUEST_TYPE_EXCEPTION(212, "请求微信支付入参类型不匹配"),
     UNKNOWN_CHANNEL_CENTER(1000, "未知支付中心"),
-    UNKNOWN_ROLE(1001, "未知角色")
+    UNKNOWN_ROLE(1001, "未知角色"),
+    UNKNOWN_SIGN(2001,"签名不通过")
 
     ;
 

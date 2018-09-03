@@ -1,11 +1,17 @@
 package quick.pager.pay.common.client.request;
 
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.math.BigDecimal;
 
 /**
  * 统一收单交易支付
+ * @author siguiyang
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class AlipayRequest extends BaseAlipayRequest {
     private static final long serialVersionUID = -8497004645794182194L;
     /**
@@ -146,147 +152,4 @@ public class AlipayRequest extends BaseAlipayRequest {
      */
     private String terminalParams;
 
-    public String getOutTradeNo() {
-        return outTradeNo;
-    }
-
-    public void setOutTradeNo(String outTradeNo) {
-        this.outTradeNo = outTradeNo;
-    }
-
-    public String getScene() {
-        return scene;
-    }
-
-    public void setScene(String scene) {
-        this.scene = scene;
-    }
-
-    public String getAuthCode() {
-        return authCode;
-    }
-
-    public void setAuthCode(String authCode) {
-        this.authCode = authCode;
-    }
-
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getBuyerId() {
-        return buyerId;
-    }
-
-    public void setBuyerId(String buyerId) {
-        this.buyerId = buyerId;
-    }
-
-    public String getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(String sellerId) {
-        this.sellerId = sellerId;
-    }
-
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public String getTransCurrency() {
-        return transCurrency;
-    }
-
-    public void setTransCurrency(String transCurrency) {
-        this.transCurrency = transCurrency;
-    }
-
-    public String getSettleCurrency() {
-        return settleCurrency;
-    }
-
-    public void setSettleCurrency(String settleCurrency) {
-        this.settleCurrency = settleCurrency;
-    }
-
-    public BigDecimal getDiscountableAmount() {
-        return discountableAmount;
-    }
-
-    public void setDiscountableAmount(BigDecimal discountableAmount) {
-        this.discountableAmount = discountableAmount;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public String getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(String operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public String getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(String storeId) {
-        this.storeId = storeId;
-    }
-
-    public String getTerminalId() {
-        return terminalId;
-    }
-
-    public void setTerminalId(String terminalId) {
-        this.terminalId = terminalId;
-    }
-
-    public String getTimeoutExpress() {
-        return timeoutExpress;
-    }
-
-    public void setTimeoutExpress(String timeoutExpress) {
-        this.timeoutExpress = timeoutExpress;
-    }
-
-    public String getAuthConfirmMode() {
-        return authConfirmMode;
-    }
-
-    public void setAuthConfirmMode(String authConfirmMode) {
-        this.authConfirmMode = authConfirmMode;
-    }
-
-    public String getTerminalParams() {
-        return terminalParams;
-    }
-
-    public void setTerminalParams(String terminalParams) {
-        this.terminalParams = terminalParams;
-    }
 }

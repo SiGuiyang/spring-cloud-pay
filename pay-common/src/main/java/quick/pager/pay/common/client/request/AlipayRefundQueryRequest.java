@@ -1,8 +1,14 @@
 package quick.pager.pay.common.client.request;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
  * 统一收单交易退款查询
+ * @author siguiyang
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class AlipayRefundQueryRequest extends BaseAlipayRequest {
     private static final long serialVersionUID = -8683141316274288952L;
     /**
@@ -20,28 +26,4 @@ public class AlipayRefundQueryRequest extends BaseAlipayRequest {
      */
     private String outRequestNo;
 
-
-    public String getTradeNo() {
-        return tradeNo;
-    }
-
-    public void setTradeNo(String tradeNo) {
-        this.tradeNo = tradeNo;
-    }
-
-    public String getOutTradeNo() {
-        return outTradeNo;
-    }
-
-    public void setOutTradeNo(String outTradeNo) {
-        this.outTradeNo = outTradeNo;
-    }
-
-    public String getOutRequestNo() {
-        return outRequestNo;
-    }
-
-    public void setOutRequestNo(String outRequestNo) {
-        this.outRequestNo = outRequestNo;
-    }
 }

@@ -1,18 +1,15 @@
-package quick.pager.pay.request;
+package quick.pager.pay.dto.pay;
 
 import lombok.Data;
+import quick.pager.pay.dto.BaseDto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- * 微信支付请求主体类
- *
- * @author siguiyang
- */
 @Data
-public class WeiXinSubmitPayRequest implements Serializable {
-    private static final long serialVersionUID = -8866298241183396595L;
+public class WeiXinSubmitPayDto extends BaseDto {
+    private static final long serialVersionUID = -5137827593536080438L;
+
     /**
      * 订单号
      */
@@ -38,12 +35,8 @@ public class WeiXinSubmitPayRequest implements Serializable {
      * 支付主题说明
      */
     private String body;
-
     /**
      * 订单金额
      */
     private BigDecimal amount;
-
-
-
 }

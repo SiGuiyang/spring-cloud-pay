@@ -1,11 +1,17 @@
 package quick.pager.pay.common.client.request;
 
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.math.BigDecimal;
 
 /**
  * 统一收单交易退款
+ * @author siguiyang
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class AlipayRefundRequest extends BaseAlipayRequest {
     private static final long serialVersionUID = -6539436686685998422L;
     /**
@@ -44,77 +50,4 @@ public class AlipayRefundRequest extends BaseAlipayRequest {
      * 商户的终端编号
      */
     private String terminalId;
-
-
-    public String getOutTradeNo() {
-        return outTradeNo;
-    }
-
-    public void setOutTradeNo(String outTradeNo) {
-        this.outTradeNo = outTradeNo;
-    }
-
-    public String getTradeNo() {
-        return tradeNo;
-    }
-
-    public void setTradeNo(String tradeNo) {
-        this.tradeNo = tradeNo;
-    }
-
-    public BigDecimal getRefundAmount() {
-        return refundAmount;
-    }
-
-    public void setRefundAmount(BigDecimal refundAmount) {
-        this.refundAmount = refundAmount;
-    }
-
-    public String getRefundCurrency() {
-        return refundCurrency;
-    }
-
-    public void setRefundCurrency(String refundCurrency) {
-        this.refundCurrency = refundCurrency;
-    }
-
-    public String getRefundReason() {
-        return refundReason;
-    }
-
-    public void setRefundReason(String refundReason) {
-        this.refundReason = refundReason;
-    }
-
-    public String getOutRequestNo() {
-        return outRequestNo;
-    }
-
-    public void setOutRequestNo(String outRequestNo) {
-        this.outRequestNo = outRequestNo;
-    }
-
-    public String getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(String operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public String getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(String storeId) {
-        this.storeId = storeId;
-    }
-
-    public String getTerminalId() {
-        return terminalId;
-    }
-
-    public void setTerminalId(String terminalId) {
-        this.terminalId = terminalId;
-    }
 }

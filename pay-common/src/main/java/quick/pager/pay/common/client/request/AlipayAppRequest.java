@@ -1,12 +1,19 @@
 package quick.pager.pay.common.client.request;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.math.BigDecimal;
 
 /**
  * app支付接口2.0
+ * @author siguiyang
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class AlipayAppRequest extends BaseAlipayRequest {
 
+    private static final long serialVersionUID = 6150004426267732234L;
     /**
      * 商品的标题/交易标题/订单标题/订单关键字等。
      */
@@ -23,37 +30,5 @@ public class AlipayAppRequest extends BaseAlipayRequest {
      * 商户网站唯一订单号
      */
     private String outTradeNo;
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public String getOutTradeNo() {
-        return outTradeNo;
-    }
-
-    public void setOutTradeNo(String outTradeNo) {
-        this.outTradeNo = outTradeNo;
-    }
 
 }

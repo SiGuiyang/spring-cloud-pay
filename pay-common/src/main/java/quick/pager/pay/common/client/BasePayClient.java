@@ -15,6 +15,7 @@ import java.nio.charset.Charset;
 
 /**
  * 抽象支付Client
+ * @author siguiyang
  */
 public abstract class BasePayClient implements IClient {
 
