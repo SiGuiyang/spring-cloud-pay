@@ -13,30 +13,44 @@ import quick.pager.pay.dto.DTO;
 import scala.concurrent.Future;
 import scala.concurrent.duration.Duration;
 
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
  * actor 执行器
+ *
  * @author siguiyang
  */
-public class ExecuteActor {
+public class ActorExecutor {
 
-    public static <T> DeferredResult<T> execute(Class<? extends AbstractActor> requireType, String actorName, DTO dto,
-                                                DeferredResultFunction<T> function) {
 
-        ActorRef actorRef = SpringContext.getActorRef(requireType, actorName);
-        Future<Object> future = Patterns.ask(actorRef, dto, new Timeout(Duration.apply(6000L, TimeUnit.SECONDS)));
+    /**
+     * 执行 actor
+     *
+     * @param requireType actor class对象
+     * @param actorName   actor 名称
+     * @param dto         消息传递dto对象
+     * @param function    函数式编程回调
+     * @param <T>         actor 执行返回的数据对象
+     * @param <R>         业务端返回数据模型
+     */
+    public static <T, R> DeferredResult<R> execute(Class<? extends AbstractActor> requireType, String actorName, DTO dto,
+                                                   DeferredResultFunction<T, R> function) {
+
+        StringBuilder builder = new StringBuilder();
+        builder.append(actorName).append(UUID.randomUUID().toString().replace("-", "0").toUpperCase());
+
+        ActorRef actorRef = SpringContext.getActorRef(requireType, builder.toString());
+        Future<Object> future = Patterns.ask(actorRef, dto, new Timeout(Duration.create(30000L, TimeUnit.SECONDS)));
         Future<T> f = future.map(new Mapper<Object, T>() {
             @Override
             public T apply(Object parameter) {
-                if (null == parameter) {
-                    return null;
-                }
                 return (T) parameter;
             }
         }, SpringContext.dispatcher());
 
-        DeferredResult<T> result = new DeferredResult<>();
+        DeferredResult<R> result = new DeferredResult<>();
+
         f.onComplete(new OnComplete<T>() {
             @Override
             public void onComplete(Throwable failure, T success) throws Throwable {

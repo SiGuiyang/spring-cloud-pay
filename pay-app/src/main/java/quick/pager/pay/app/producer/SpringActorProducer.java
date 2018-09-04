@@ -6,7 +6,7 @@ import akka.actor.IndirectActorProducer;
 import org.springframework.context.ApplicationContext;
 
 /**
- * Spring Actor 执行器
+ * Spring Actor 生产者
  *
  * @author siguiyang
  */
@@ -15,6 +15,11 @@ public class SpringActorProducer implements IndirectActorProducer {
     private ApplicationContext applicationContext;
 
     private Class<? extends AbstractActor> requireType;
+
+    public SpringActorProducer(ApplicationContext applicationContext, Class<? extends AbstractActor> requireType) {
+        this.applicationContext = applicationContext;
+        this.requireType = requireType;
+    }
 
     @Override
     public Actor produce() {

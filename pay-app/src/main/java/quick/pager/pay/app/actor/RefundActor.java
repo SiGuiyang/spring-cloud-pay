@@ -5,9 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import quick.pager.pay.dto.pay.RefundDTO;
 
 /**
  * 退款
+ *
  * @author siguiyang
  */
 @Service
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Service;
 public class RefundActor extends AbstractActor {
     @Override
     public Receive createReceive() {
-        return null;
+        return receiveBuilder().match(RefundDTO.class, refundDTO -> {
+
+        }).build();
     }
 }

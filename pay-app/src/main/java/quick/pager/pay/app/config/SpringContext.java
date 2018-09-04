@@ -1,5 +1,6 @@
 package quick.pager.pay.app.config;
 
+import akka.actor.Actor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
@@ -43,8 +44,8 @@ public class SpringContext implements ApplicationContextAware {
         return getActorSystem().dispatcher();
     }
 
-    public static Props props(Class<?> requireType, String actorName) {
-        return Props.create(SpringActorProducer.class, actorName);
+    private static Props props(Class<? extends Actor> requireType) {
+        return Props.create(SpringActorProducer.class, applicationContext, requireType);
     }
 
     /**
@@ -53,8 +54,8 @@ public class SpringContext implements ApplicationContextAware {
      * @param requireType 类型
      * @param actorName   actor名称
      */
-    public static ActorRef getActorRef(Class<?> requireType, String actorName) {
-        return getActorSystem().actorOf(props(requireType, actorName), actorName);
+    public static ActorRef getActorRef(Class<? extends Actor> requireType, String actorName) {
+        return getActorSystem().actorOf(props(requireType), actorName);
     }
 
 

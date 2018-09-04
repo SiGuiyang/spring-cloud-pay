@@ -5,9 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import quick.pager.pay.dto.pay.QueryOrderDTO;
 
 /**
  * 查询订单actor
+ *
  * @author siguiyang
  */
 @Service
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Service;
 public class QueryOrderActor extends AbstractActor {
     @Override
     public Receive createReceive() {
-        return null;
+        return receiveBuilder().match(QueryOrderDTO.class, queryOrderDTO -> {
+
+        }).build();
     }
 }
