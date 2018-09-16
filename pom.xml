@@ -149,7 +149,6 @@
     </build>
     <modules>
         <module>pay-admin</module>
-        <module>pay-admin-zuul</module>
         <module>pay-alipay</module>
         <module>pay-app</module>
         <module>pay-common</module>

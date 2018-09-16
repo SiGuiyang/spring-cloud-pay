@@ -5,6 +5,8 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 import quick.pager.pay.common.client.IRequest;
 import quick.pager.pay.common.client.response.WeiXinBaseResponse;
 
+import java.util.Map;
+
 
 public class XMLUtils {
 
@@ -28,6 +30,23 @@ public class XMLUtils {
     public static WeiXinBaseResponse parseXML(String xml, WeiXinBaseResponse response) {
 
         return null;
+    }
+
+
+    /**
+     * 将map转成xml
+     */
+    public static String mapToXml(Map<String, String> data) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<xml>").append("\n");
+        data.forEach((k, v) -> {
+            builder.append("<").append(k).append(">").append(v).append("</").append(k).append(">").append("\n");
+        });
+
+        builder.append("</xml>");
+
+        return builder.toString();
+
     }
 }
 

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.BaseDto;
-import quick.pager.pay.dto.admin.ChannelDto;
+import quick.pager.pay.dto.BaseDTO;
+import quick.pager.pay.dto.admin.ChannelDTO;
 import quick.pager.pay.mapper.pay.PayChannelMapper;
-import quick.pager.pay.model.PayChannel;
+import quick.pager.pay.model.pay.PayChannel;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
 
@@ -27,8 +27,8 @@ public class ChannelService implements IService {
     private PayChannelMapper payChannelMapper;
 
     @Override
-    public Response doService(BaseDto dto) {
-        ChannelDto channelDto = (ChannelDto) dto;
+    public Response doService(BaseDTO dto) {
+        ChannelDTO channelDto = (ChannelDTO) dto;
 
         Constants.Operation operation = channelDto.getOperation();
         Response response = null;
@@ -55,7 +55,7 @@ public class ChannelService implements IService {
     /**
      * 支付配置列表
      */
-    private Response channelList(ChannelDto dto) {
+    private Response channelList(ChannelDTO dto) {
 
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
 
@@ -90,7 +90,7 @@ public class ChannelService implements IService {
     /**
      * 新增或者修改渠道
      */
-    private Response channelModify(ChannelDto dto) {
+    private Response channelModify(ChannelDTO dto) {
         // 添加
         if (ObjectUtils.isEmpty(dto.getId())) {
             PayChannel payChannel = new PayChannel();

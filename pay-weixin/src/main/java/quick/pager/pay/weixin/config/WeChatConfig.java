@@ -1,10 +1,20 @@
 package quick.pager.pay.weixin.config;
 
-import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.stereotype.Component;
+import lombok.Data;
 
-@Component
-@RefreshScope
+@Data
 public class WeChatConfig {
+    /**
+     * appId
+     */
+    private String appId;
+    /**
+     * 商户Id 商户号
+     */
+    private String mchId;
+    /**
+     * 商户密钥
+     */
+    private String secureKey;
 
 }

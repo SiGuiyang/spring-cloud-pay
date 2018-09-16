@@ -12,8 +12,8 @@ import quick.pager.pay.admin.service.UserLoginService;
 import quick.pager.pay.admin.service.UserLogoutService;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.TokenDto;
-import quick.pager.pay.dto.admin.UserDto;
+import quick.pager.pay.dto.TokenDTO;
+import quick.pager.pay.dto.admin.UserDTO;
 import quick.pager.pay.request.admin.UserRequest;
 import quick.pager.pay.response.Response;
 
@@ -41,7 +41,7 @@ public class AccountController {
             return resp;
         }
 
-        UserDto dto = new UserDto();
+        UserDTO dto = new UserDTO();
         dto.setUsername(request.getUsername());
         dto.setPassword(request.getPassword());
         return userLoginService.doService(dto);
@@ -55,7 +55,7 @@ public class AccountController {
             return new Response(ResponseStatus.PARAMETER_ERROR.code, ResponseStatus.PARAMETER_ERROR.msg);
         }
 
-        TokenDto dto = new TokenDto();
+        TokenDTO dto = new TokenDTO();
         dto.setToken(token);
         return userInfoService.doService(dto);
     }
@@ -68,7 +68,7 @@ public class AccountController {
             return new Response(ResponseStatus.PARAMETER_ERROR.code, ResponseStatus.PARAMETER_ERROR.msg);
         }
 
-        TokenDto dto = new TokenDto();
+        TokenDTO dto = new TokenDTO();
         dto.setToken(token);
         return userLogoutService.doService(dto);
     }

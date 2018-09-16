@@ -7,13 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import quick.pager.pay.Constants;
-import quick.pager.pay.dto.BaseDto;
-import quick.pager.pay.dto.admin.OrderDto;
-import quick.pager.pay.mapper.order.OrderMapper;
-import quick.pager.pay.model.form.Order;
+import quick.pager.pay.dto.BaseDTO;
+import quick.pager.pay.dto.admin.OrderDTO;
+import quick.pager.pay.mapper.pay.OrderMapper;
+import quick.pager.pay.model.pay.Order;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
-import quick.pager.pay.vo.OrderVO;
+import quick.pager.pay.vo.admin.OrderVO;
 
 import java.util.List;
 
@@ -25,15 +25,15 @@ public class OrderService implements IService {
     private OrderMapper orderMapper;
 
     @Override
-    public Response doService(BaseDto dto) {
+    public Response doService(BaseDTO dto) {
 
-        OrderDto orderDto = (OrderDto) dto;
+        OrderDTO orderDTO = (OrderDTO) dto;
 
-        Constants.Operation operation = orderDto.getOperation();
+        Constants.Operation operation = orderDTO.getOperation();
         Response response = null;
         switch (operation) {
             case list:
-                response = queryOrderList(orderDto);
+                response = queryOrderList(orderDTO);
                 break;
 
         }
@@ -43,7 +43,7 @@ public class OrderService implements IService {
     /**
      * 订单列表
      */
-    private Response queryOrderList(OrderDto dto) {
+    private Response queryOrderList(OrderDTO dto) {
         OrderVO vo = new OrderVO();
         vo.setMerchantNo(dto.getMerchantNo());
         vo.setMerchantOrderCode(dto.getMerchantOrderCode());

@@ -9,7 +9,7 @@ import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import quick.pager.pay.dto.BaseDto;
+import quick.pager.pay.dto.BaseDTO;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
 
@@ -24,7 +24,7 @@ public class MPCodeService implements IService{
     private RedisTemplate template;
 
     @Override
-    public Response doService(BaseDto dto) {
+    public Response doService(BaseDTO dto) {
 
         return null;
     }

@@ -2,7 +2,7 @@ package quick.pager.pay.request.admin;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import quick.pager.pay.request.Request;
+import quick.pager.pay.request.pay.Request;
 
 @Data
 public class ConfigRequest extends Request{

@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import quick.pager.pay.Constants;
-import quick.pager.pay.dto.BaseDto;
-import quick.pager.pay.mapper.SystemConfigMapper;
-import quick.pager.pay.model.SystemConfig;
+import quick.pager.pay.dto.BaseDTO;
+import quick.pager.pay.mapper.common.SystemConfigMapper;
+import quick.pager.pay.model.common.SystemConfig;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
 
@@ -45,7 +45,7 @@ public class InitService implements IService {
         });
     }
     @Override
-    public Response doService(BaseDto dto) {
+    public Response doService(BaseDTO dto) {
         init();
         return new Response();
     }

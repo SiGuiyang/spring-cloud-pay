@@ -3,8 +3,6 @@ package quick.pager.pay.response;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
 
@@ -16,19 +14,16 @@ import java.io.Serializable;
  */
 @Data
 @Builder
-@RequiredArgsConstructor
 public class Response<T> implements Serializable {
     private static final long serialVersionUID = 1490755142057414040L;
 
     /**
      * 响应对象响应吗
      */
-    @NonNull
     private int code = 200;
     /**
      * 响应提示信息
      */
-    @NonNull
     private String msg = "操作成功";
 
     /**
@@ -41,4 +36,18 @@ public class Response<T> implements Serializable {
      */
     private T data;
 
+    public Response() {
+    }
+
+    public Response(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
+    public Response(int code, String msg, long total, T data) {
+        this.code = code;
+        this.msg = msg;
+        this.total = total;
+        this.data = data;
+    }
 }

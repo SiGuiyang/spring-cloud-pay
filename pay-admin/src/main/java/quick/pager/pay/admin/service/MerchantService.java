@@ -11,13 +11,13 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.BaseDto;
-import quick.pager.pay.dto.admin.MerchantDto;
+import quick.pager.pay.dto.BaseDTO;
+import quick.pager.pay.dto.admin.MerchantDTO;
 import quick.pager.pay.mapper.merchant.MerchantMapper;
 import quick.pager.pay.model.merchant.Merchant;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
-import quick.pager.pay.vo.MerchantVO;
+import quick.pager.pay.vo.admin.MerchantVO;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -31,22 +31,22 @@ public class MerchantService implements IService {
     private MerchantMapper merchantMapper;
 
     @Override
-    public Response doService(BaseDto dto) {
-        MerchantDto merchantDto  = (MerchantDto) dto;
+    public Response doService(BaseDTO dto) {
+        MerchantDTO merchantDTO = (MerchantDTO) dto;
 
-        Constants.Operation operation = merchantDto.getOperation();
+        Constants.Operation operation = merchantDTO.getOperation();
         Response response = null;
         switch (operation){
             case list:
-                response = queryMerchantList(merchantDto);
+                response = queryMerchantList(merchantDTO);
                 break;
             case select:
-                response = merchantInfo(merchantDto.getId());
+                response = merchantInfo(merchantDTO.getId());
                 break;
             case update:
-                response = modifyMerchant(merchantDto);
+                response = modifyMerchant(merchantDTO);
             case delete:
-                response = deleteMerchant(merchantDto.getId());
+                response = deleteMerchant(merchantDTO.getId());
                 break;
         }
         return response;
@@ -56,7 +56,7 @@ public class MerchantService implements IService {
     /**
      * 查询商户列表
      */
-    private Response queryMerchantList(MerchantDto dto) {
+    private Response queryMerchantList(MerchantDTO dto) {
 
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         MerchantVO vo = new MerchantVO();
@@ -98,7 +98,7 @@ public class MerchantService implements IService {
     /**
      * 新增或者修改商户
 ß     */
-    private Response modifyMerchant(MerchantDto dto) {
+    private Response modifyMerchant(MerchantDTO dto) {
         // 新增
         if (ObjectUtils.isEmpty(dto.getId())) {
             Merchant merchant = new Merchant();

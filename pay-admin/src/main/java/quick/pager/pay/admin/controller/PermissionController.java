@@ -10,9 +10,9 @@ import quick.pager.pay.admin.service.MenuService;
 import quick.pager.pay.admin.service.PermissionService;
 import quick.pager.pay.admin.service.RoleService;
 import quick.pager.pay.Constants;
-import quick.pager.pay.dto.admin.MenuDto;
-import quick.pager.pay.dto.admin.PermissionDto;
-import quick.pager.pay.dto.admin.RoleDto;
+import quick.pager.pay.dto.admin.MenuDTO;
+import quick.pager.pay.dto.admin.PermissionDTO;
+import quick.pager.pay.dto.admin.RoleDTO;
 import quick.pager.pay.request.admin.PermissionRequest;
 import quick.pager.pay.request.admin.UserRequest;
 import quick.pager.pay.response.Response;
@@ -36,7 +36,7 @@ public class PermissionController {
     @PostMapping("/permission/user/list")
     public Response userList(PermissionRequest request) {
 
-        PermissionDto dto  = new PermissionDto();
+        PermissionDTO dto  = new PermissionDTO();
         dto.setPageNum(request.getPageNum());
         dto.setPageSize(request.getPageSize());
         dto.setBeginTime(request.getBeginTime());
@@ -49,7 +49,7 @@ public class PermissionController {
     @ApiOperation("查看用户信息")
     @PostMapping("/permission/user/info")
     public Response userInfo(PermissionRequest request) {
-        PermissionDto dto = new PermissionDto();
+        PermissionDTO dto = new PermissionDTO();
         dto.setId(request.getId());
         dto.setOperation(Constants.Operation.select);
         return permissionService.doService(dto);
@@ -58,7 +58,7 @@ public class PermissionController {
     @ApiOperation("添加用户")
     @PostMapping("/permission/user/add")
     public Response addUser(UserRequest request) {
-        PermissionDto dto = new PermissionDto();
+        PermissionDTO dto = new PermissionDTO();
         return permissionService.doService(dto);
     }
 
@@ -66,7 +66,7 @@ public class PermissionController {
     @ApiOperation("获取角色列表")
     @PostMapping("/permission/roles")
     public Response roles(PermissionRequest request){
-        PermissionDto dto = new PermissionDto();
+        PermissionDTO dto = new PermissionDTO();
 
         return permissionService.doService(dto);
     }
@@ -75,7 +75,7 @@ public class PermissionController {
     @PostMapping("/permission/role/list")
     public Response roleList(PermissionRequest request) {
 
-        RoleDto dto = new RoleDto();
+        RoleDTO dto = new RoleDTO();
         dto.setPageSize(request.getPageSize());
         dto.setPageNum(request.getPageNum());
         dto.setUsername(request.getUsername());
@@ -86,7 +86,7 @@ public class PermissionController {
     @ApiOperation("角色信息")
     @PostMapping("/permission/role/info")
     public Response roleInfo(PermissionRequest request) {
-        RoleDto dto = new RoleDto();
+        RoleDTO dto = new RoleDTO();
         dto.setId(request.getId());
         dto.setOperation(Constants.Operation.select);
         return roleService.doService(dto);
@@ -96,7 +96,7 @@ public class PermissionController {
     @ApiOperation("添加|修改角色")
     @PostMapping("/permission/role/modify")
     public Response modify(PermissionRequest request) {
-        RoleDto dto = new RoleDto();
+        RoleDTO dto = new RoleDTO();
 
         dto.setId(request.getId());
         dto.setRoleName(request.getRoleName());
@@ -111,7 +111,7 @@ public class PermissionController {
     @PostMapping("/permission/menu/list")
     @ApiOperation("菜单列表")
     public Response resourceList(PermissionRequest request) {
-        MenuDto dto = new MenuDto();
+        MenuDTO dto = new MenuDTO();
         dto.setId(request.getId());
         dto.setOperation(Constants.Operation.list);
         return menuService.doService(dto);
@@ -120,7 +120,7 @@ public class PermissionController {
     @ApiOperation("赋予权限")
     @PostMapping("/permission")
     public Response permission(PermissionRequest request) {
-        PermissionDto dto = new PermissionDto();
+        PermissionDTO dto = new PermissionDTO();
         dto.setId(request.getId());
         dto.setResIds(request.getResIds());
         dto.setOperation(Constants.Operation.permissions);
@@ -130,7 +130,7 @@ public class PermissionController {
     @ApiOperation("获取全部角色代码信息")
     @PostMapping("/getRoleCode")
     public Response getRoleCode() {
-        RoleDto dto = new RoleDto();
+        RoleDTO dto = new RoleDTO();
         dto.setOperation(Constants.Operation.cache);
         return roleService.doService(dto);
     }

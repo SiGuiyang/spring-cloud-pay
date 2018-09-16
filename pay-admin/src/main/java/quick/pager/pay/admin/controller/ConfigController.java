@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import quick.pager.pay.admin.service.ConfigService;
 import quick.pager.pay.Constants;
-import quick.pager.pay.dto.admin.ConfigDto;
+import quick.pager.pay.dto.admin.ConfigDTO;
 import quick.pager.pay.request.admin.ConfigRequest;
 import quick.pager.pay.response.Response;
 
@@ -25,7 +25,7 @@ public class ConfigController {
     @ApiModelProperty("配置项列表")
     @PostMapping("/config/list")
     public Response configList(ConfigRequest request) {
-        ConfigDto dto = new ConfigDto();
+        ConfigDTO dto = new ConfigDTO();
         dto.setBeginTime(request.getBeginTime());
         dto.setEndTime(request.getEndTime());
         dto.setConfigName(request.getConfigName());
@@ -39,7 +39,7 @@ public class ConfigController {
     @ApiOperation("单个配置项信息")
     @PostMapping("/config/info")
     public Response configInfo(ConfigRequest request) {
-        ConfigDto dto = new ConfigDto();
+        ConfigDTO dto = new ConfigDTO();
         dto.setId(request.getId());
         dto.setOperation(Constants.Operation.select);
         return configService.doService(dto);
@@ -48,7 +48,7 @@ public class ConfigController {
     @ApiModelProperty("修改配置项")
     @PostMapping("/config/modify")
     public Response modifyConfig(ConfigRequest request) {
-        ConfigDto dto = new ConfigDto();
+        ConfigDTO dto = new ConfigDTO();
         dto.setConfigName(request.getConfigName());
         dto.setConfigValue(request.getConfigValue());
         dto.setDescription(request.getDescription());
@@ -60,7 +60,7 @@ public class ConfigController {
     @ApiOperation("更新缓存")
     @PostMapping("/config/cache")
     public Response modifyConfigRedisCache(ConfigRequest request) {
-        ConfigDto dto = new ConfigDto();
+        ConfigDTO dto = new ConfigDTO();
         dto.setConfigName(request.getConfigName());
         dto.setConfigValue(request.getConfigValue());
         dto.setDescription(request.getDescription());

@@ -4,7 +4,7 @@ package quick.pager.pay.mapper.user;
 import org.apache.ibatis.annotations.Param;
 import quick.pager.pay.mapper.IMapper;
 import quick.pager.pay.model.user.Resources;
-import quick.pager.pay.vo.ResourceVO;
+import quick.pager.pay.vo.admin.ResourceVO;
 
 import java.util.List;
 

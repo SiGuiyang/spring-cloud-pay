@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import quick.pager.pay.admin.service.MerchantService;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.admin.MerchantDto;
+import quick.pager.pay.dto.admin.MerchantDTO;
 import quick.pager.pay.request.admin.MerchantRequest;
 import quick.pager.pay.response.Response;
 
@@ -27,7 +27,7 @@ public class MerchantController {
     @PostMapping("/merchant/list")
     public Response queryMerchantList(MerchantRequest request) {
 
-        MerchantDto dto = new MerchantDto();
+        MerchantDTO dto = new MerchantDTO();
 
         dto.setMobile(request.getMobile());
         dto.setBankName(request.getBankName());
@@ -52,7 +52,7 @@ public class MerchantController {
             return new Response(ResponseStatus.PARAMETER_ERROR.code, ResponseStatus.PARAMETER_ERROR.msg);
         }
 
-        MerchantDto dto = new MerchantDto();
+        MerchantDTO dto = new MerchantDTO();
         dto.setMerchantNo(request.getMerchantNo());
         dto.setOperation(Constants.Operation.select);
         dto.setId(request.getId());
@@ -66,7 +66,7 @@ public class MerchantController {
             return new Response(ResponseStatus.PARAMETER_ERROR.code, ResponseStatus.PARAMETER_ERROR.msg);
         }
 
-        MerchantDto dto = new MerchantDto();
+        MerchantDTO dto = new MerchantDTO();
 
         dto.setId(request.getId());
         dto.setMobile(request.getMobile());
@@ -100,7 +100,7 @@ public class MerchantController {
             return new Response(ResponseStatus.PARAMETER_ERROR.code, ResponseStatus.PARAMETER_ERROR.msg);
         }
 
-        MerchantDto dto = new MerchantDto();
+        MerchantDTO dto = new MerchantDTO();
 
         dto.setMerchantNo(request.getMerchantNo());
         dto.setId(request.getId());

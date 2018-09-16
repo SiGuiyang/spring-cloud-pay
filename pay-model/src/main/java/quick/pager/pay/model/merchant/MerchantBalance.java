@@ -3,7 +3,7 @@ package quick.pager.pay.model.merchant;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import quick.pager.pay.model.IModel;
+import quick.pager.pay.model.common.IModel;
 
 import java.math.BigDecimal;
 

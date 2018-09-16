@@ -3,7 +3,7 @@ package quick.pager.pay.model.user;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import quick.pager.pay.model.IModel;
+import quick.pager.pay.model.common.IModel;
 
 /**
  * 菜单资源<br />

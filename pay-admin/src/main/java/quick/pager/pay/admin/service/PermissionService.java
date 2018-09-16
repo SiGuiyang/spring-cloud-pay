@@ -10,8 +10,8 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.BaseDto;
-import quick.pager.pay.dto.admin.PermissionDto;
+import quick.pager.pay.dto.BaseDTO;
+import quick.pager.pay.dto.admin.PermissionDTO;
 import quick.pager.pay.mapper.user.RoleMapper;
 import quick.pager.pay.mapper.user.RoleResourcesMapper;
 import quick.pager.pay.mapper.user.UserMapper;
@@ -20,7 +20,7 @@ import quick.pager.pay.model.user.RoleResources;
 import quick.pager.pay.model.user.User;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
-import quick.pager.pay.vo.UserVO;
+import quick.pager.pay.vo.admin.UserVO;
 
 import java.util.Date;
 import java.util.List;
@@ -37,19 +37,19 @@ public class PermissionService implements IService {
     private RoleResourcesMapper roleResourcesMapper;
 
     @Override
-    public Response doService(BaseDto dto) {
-        PermissionDto permissionDto = (PermissionDto) dto;
-        Constants.Operation operation = permissionDto.getOperation();
+    public Response doService(BaseDTO dto) {
+        PermissionDTO permissionDTO = (PermissionDTO) dto;
+        Constants.Operation operation = permissionDTO.getOperation();
         Response response = null;
         switch (operation) {
             case list:
-                response = queryUserList(permissionDto);
+                response = queryUserList(permissionDTO);
                 break;
             case select:
-                response = userInfo(permissionDto.getId());
+                response = userInfo(permissionDTO.getId());
                 break;
             case permissions:
-                response = permission(permissionDto);
+                response = permission(permissionDTO);
                 break;
 
         }
@@ -60,7 +60,7 @@ public class PermissionService implements IService {
     /**
      * 权限用户列表
      */
-    private Response queryUserList(PermissionDto dto) {
+    private Response queryUserList(PermissionDTO dto) {
         log.info("查询用户列表，查询参数 username = {}，beginTime = {}，endTime = {} ", dto.getUsername(), dto.getBeginTime(), dto.getEndTime());
 
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
@@ -113,7 +113,7 @@ public class PermissionService implements IService {
     /**
      * 赋予权限
      */
-    public Response permission(PermissionDto dto) {
+    public Response permission(PermissionDTO dto) {
 
         Role role = roleMapper.selectByPrimaryKey(dto.getId());
 

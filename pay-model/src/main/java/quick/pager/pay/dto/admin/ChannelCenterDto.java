@@ -4,12 +4,12 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import quick.pager.pay.dto.BaseDto;
+import quick.pager.pay.dto.BaseDTO;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString
-public class ChannelCenterDto extends BaseDto {
+public class ChannelCenterDto extends BaseDTO {
     private static final long serialVersionUID = 5248393104117893500L;
 
     @ApiModelProperty("支付渠道名称")

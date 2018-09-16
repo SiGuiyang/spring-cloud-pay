@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.BaseDto;
-import quick.pager.pay.dto.admin.ConfigDto;
-import quick.pager.pay.mapper.SystemConfigMapper;
-import quick.pager.pay.model.SystemConfig;
+import quick.pager.pay.dto.BaseDTO;
+import quick.pager.pay.dto.admin.ConfigDTO;
+import quick.pager.pay.mapper.common.SystemConfigMapper;
+import quick.pager.pay.model.common.SystemConfig;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
 
@@ -31,9 +31,9 @@ public class ConfigService implements IService {
     private InitService initService;
 
     @Override
-    public Response doService(BaseDto dto) {
+    public Response doService(BaseDTO dto) {
 
-        ConfigDto config = (ConfigDto) dto;
+        ConfigDTO config = (ConfigDTO) dto;
 
         Response response = null;
         Constants.Operation operation = config.getOperation();
@@ -58,7 +58,7 @@ public class ConfigService implements IService {
     /**
      * 查询配置项列表
      */
-    private Response queryConfigList(ConfigDto dto) {
+    private Response queryConfigList(ConfigDTO dto) {
 
         Response<List<SystemConfig>> response = new Response<>();
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
@@ -84,7 +84,7 @@ public class ConfigService implements IService {
     /**
      * 更新配置
      */
-    private Response updateConfig(ConfigDto dto) {
+    private Response updateConfig(ConfigDTO dto) {
 
         SystemConfig systemConfig = systemConfigMapper.selectByPrimaryKey(dto.getId());
         if (ObjectUtils.isEmpty(systemConfig)) {

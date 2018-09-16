@@ -30,7 +30,7 @@
             <property name="constructorBased" value="false"/>
             <property name="enableSubPackages" value="true"/>
             <property name="immutable" value="false"/>
-            <property name="rootClass" value="quick.pager.pay.model.IModel"/>
+            <property name="rootClass" value="quick.pager.pay.model.common.IModel"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <sqlMapGenerator targetPackage="quick.pager.pay.mapper" targetProject="src/main/java">

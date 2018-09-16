@@ -19,6 +19,10 @@ public interface Constants {
     // 微信支付前缀
     String WECHAT_PREFIX = "WECHAT";
 
+    String SUCCESS = "SUCCESS";
+
+    String FAIL = "FAIL";
+
     enum DatabaseColumn {
         id, sequence, server_status, create_time
     }
@@ -26,7 +30,7 @@ public interface Constants {
     /**
      * 操作模式
      */
-    enum Operation{
+    enum Operation {
         permissions, // 赋予权限
         cache, //缓存
         list, // 列表
@@ -108,8 +112,14 @@ public interface Constants {
         String COMMON_NINE = "9";
     }
 
+    /**
+     * 订单支付状态
+     */
     interface PayStatus {
         int created = 0;
+        int cancel = 1;
+        int success = 2;
+        int failure = 3;
 
     }
 
@@ -120,11 +130,12 @@ public interface Constants {
 
     interface TradeType {
         String H5_TRADE_TYPE = "";
-        String APP_TRADE_TYPE = "";
-
-        String JSAPI_TRADE_TYPE = "";
-
-        String NATIVE_TRADE_TYPE = "";
+        // APP支付
+        String WECHAT_APP_TRADE_TYPE = "APP";
+        // JSAPI 公众号支付
+        String WECHAT_JSAPI_TRADE_TYPE = "JSAPI";
+        // ß扫码支付
+        String WECHAT_NATIVE_TRADE_TYPE = "NATIVE";
     }
 
     /**
@@ -148,4 +159,13 @@ public interface Constants {
         String ALIPAY_SCAN_QR = "ALIPAY_SCAN_QR"; //支付宝扫码支付
     }
 
+    /**
+     * 正则表达式
+     */
+    interface Reg {
+        // 仅数字与字母
+        String ONLY_NUMBERS_AND_LETTERS = "^[A_Za_z0-9]+$";
+        // 仅数字
+        String ONLY_NUMBERS = "^[1-9]*$";
+    }
 }

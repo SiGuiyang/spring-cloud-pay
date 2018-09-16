@@ -3,13 +3,11 @@ package quick.pager.pay.alipay.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import quick.pager.pay.alipay.service.TestService;
-import quick.pager.pay.dto.TestDto;
-import quick.pager.pay.request.Request;
+import quick.pager.pay.dto.actor.TestDTO;
+import quick.pager.pay.request.pay.Request;
 import quick.pager.pay.response.Response;
 
 /**
@@ -25,7 +23,7 @@ public class TestController {
     @RequestMapping("/spring/test")
     @ApiOperation("测试spring client 是否连接")
     public Response test(Request request) {
-        TestDto dto = new TestDto();
+        TestDTO dto = new TestDTO();
         dto.setBeginTime(request.getBeginTime());
         dto.setEndTime(request.getEndTime());
         dto.setMerchantNo(request.getMerchantNo());

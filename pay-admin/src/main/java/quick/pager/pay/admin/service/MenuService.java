@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import quick.pager.pay.Constants;
-import quick.pager.pay.dto.BaseDto;
-import quick.pager.pay.dto.admin.MenuDto;
+import quick.pager.pay.dto.BaseDTO;
+import quick.pager.pay.dto.admin.MenuDTO;
 import quick.pager.pay.mapper.user.ResourcesMapper;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
-import quick.pager.pay.vo.MenuVO;
-import quick.pager.pay.vo.ResourceVO;
+import quick.pager.pay.vo.admin.MenuVO;
+import quick.pager.pay.vo.admin.ResourceVO;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,8 +29,8 @@ public class MenuService implements IService {
     private ResourcesMapper resourcesMapper;
 
     @Override
-    public Response doService(BaseDto dto) {
-        MenuDto menuDto = (MenuDto) dto;
+    public Response doService(BaseDTO dto) {
+        MenuDTO menuDto = (MenuDTO) dto;
 
         Constants.Operation operation = menuDto.getOperation();
 

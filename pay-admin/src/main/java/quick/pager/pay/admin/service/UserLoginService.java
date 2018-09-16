@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.BaseDto;
-import quick.pager.pay.dto.LoginDto;
+import quick.pager.pay.dto.BaseDTO;
+import quick.pager.pay.dto.LoginDTO;
 import quick.pager.pay.mapper.user.UserMapper;
 import quick.pager.pay.model.user.User;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
-import quick.pager.pay.vo.AdminVO;
+import quick.pager.pay.vo.admin.AdminVO;
 
 import java.util.Arrays;
 import java.util.UUID;
@@ -29,8 +29,8 @@ public class UserLoginService implements IService {
     @Autowired
     private RedisService redisService;
     @Override
-    public Response doService(BaseDto dto) {
-        LoginDto loginDto = (LoginDto) dto;
+    public Response doService(BaseDTO dto) {
+        LoginDTO loginDto = (LoginDTO) dto;
 
         log.info("开始调用登录服务，用户名 username = {},登录密码 verifyCode = {}", loginDto.getUsername(), loginDto.getPassword());
 

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="quick.pager.pay.mapper.MerchantMapper">
+    <resultMap id="BaseResultMap" type="quick.pager.pay.model.merchant.Merchant">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="merchant_name" jdbcType="VARCHAR" property="merchantName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="server_status" jdbcType="INTEGER" property="serverStatus"/>
+        <result column="contract_name" jdbcType="VARCHAR" property="contractName"/>
+        <result column="merchant_no" jdbcType="VARCHAR" property="merchantNo"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="bank_name" jdbcType="VARCHAR" property="bankName"/>
+        <result column="bank_num" jdbcType="VARCHAR" property="bankNum"/>
+        <result column="rate" jdbcType="DECIMAL" property="rate"/>
+        <result column="deduction" jdbcType="DECIMAL" property="deduction"/>
+        <result column="id_card" jdbcType="VARCHAR" property="idCard"/>
+        <result column="id_card_front" jdbcType="VARCHAR" property="idCardFront"/>
+        <result column="id_card_behind" jdbcType="VARCHAR" property="idCardBehind"/>
+        <result column="public_key" jdbcType="VARCHAR" property="publicKey"/>
+        <result column="private_key" jdbcType="VARCHAR" property="privateKey"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="license" jdbcType="VARCHAR" property="license"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="delete_status" jdbcType="BIT" property="deleteStatus"/>
+        <result column="high_quality" jdbcType="INTEGER" property="highQuality"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, merchant_name, password, server_status, contract_name, merchant_no, mobile, bank_name, 
+    bank_num, rate, deduction, id_card, id_card_front, id_card_behind, public_key,
+    private_key, address, license, create_time, update_time, delete_status, high_quality
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_merchant
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_merchant
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <insert id="insertSelective" parameterType="quick.pager.pay.model.merchant.Merchant">
+        insert into t_merchant
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="merchantName != null">
+                merchant_name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="serverStatus != null">
+                server_status,
+            </if>
+            <if test="contractName != null">
+                contract_name,
+            </if>
+            <if test="merchantNo != null">
+                merchant_no,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="bankName != null">
+                bank_name,
+            </if>
+            <if test="bankNum != null">
+                bank_num,
+            </if>
+            <if test="rate != null">
+                rate,
+            </if>
+            <if test="deduction != null">
+                deduction,
+            </if>
+            <if test="idCard != null">
+                id_card,
+            </if>
+            <if test="idCardFront != null">
+                id_card_front,
+            </if>
+            <if test="idCardBehind != null">
+                id_card_behind,
+            </if>
+            <if test="publicKey != null">
+                public_key,
+            </if>
+            <if test="privateKey != null">
+                private_key,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="license != null">
+                license,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="deleteStatus != null">
+                delete_status,
+            </if>
+            <if test="highQuality != null">
+                high_quality,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="merchantName != null">
+                #{merchantName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="serverStatus != null">
+                #{serverStatus,jdbcType=INTEGER},
+            </if>
+            <if test="contractName != null">
+                #{contractName,jdbcType=VARCHAR},
+            </if>
+            <if test="merchantNo != null">
+                #{merchantNo,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="bankName != null">
+                #{bankName,jdbcType=VARCHAR},
+            </if>
+            <if test="bankNum != null">
+                #{bankNum,jdbcType=VARCHAR},
+            </if>
+            <if test="rate != null">
+                #{rate,jdbcType=DECIMAL},
+            </if>
+            <if test="deduction != null">
+                #{deduction,jdbcType=DECIMAL},
+            </if>
+            <if test="idCard != null">
+                #{idCard,jdbcType=VARCHAR},
+            </if>
+            <if test="idCardFront != null">
+                #{idCardFront,jdbcType=VARCHAR},
+            </if>
+            <if test="idCardBehind != null">
+                #{idCardBehind,jdbcType=VARCHAR},
+            </if>
+            <if test="publicKey != null">
+                #{publicKey,jdbcType=VARCHAR},
+            </if>
+            <if test="privateKey != null">
+                #{privateKey,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="license != null">
+                #{license,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteStatus != null">
+                #{deleteStatus,jdbcType=BIT},
+            </if>
+            <if test="highQuality != null">
+                #{highQuality,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="quick.pager.pay.model.merchant.Merchant">
+        update t_merchant
+        <set>
+            <if test="merchantName != null">
+                merchant_name = #{merchantName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="serverStatus != null">
+                server_status = #{serverStatus,jdbcType=INTEGER},
+            </if>
+            <if test="contractName != null">
+                contract_name = #{contractName,jdbcType=VARCHAR},
+            </if>
+            <if test="merchantNo != null">
+                merchant_no = #{merchantNo,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="bankName != null">
+                bank_name = #{bankName,jdbcType=VARCHAR},
+            </if>
+            <if test="bankNum != null">
+                bank_num = #{bankNum,jdbcType=VARCHAR},
+            </if>
+            <if test="rate != null">
+                rate = #{rate,jdbcType=DECIMAL},
+            </if>
+            <if test="deduction != null">
+                deduction = #{deduction,jdbcType=DECIMAL},
+            </if>
+            <if test="idCard != null">
+                id_card = #{idCard,jdbcType=VARCHAR},
+            </if>
+            <if test="idCardFront != null">
+                id_card_front = #{idCardFront,jdbcType=VARCHAR},
+            </if>
+            <if test="idCardBehind != null">
+                id_card_behind = #{idCardBehind,jdbcType=VARCHAR},
+            </if>
+            <if test="publicKey != null">
+                public_key = #{publicKey,jdbcType=VARCHAR},
+            </if>
+            <if test="privateKey != null">
+                private_key = #{privateKey,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="license != null">
+                license = #{license,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteStatus != null">
+                delete_status = #{deleteStatus,jdbcType=BIT},
+            </if>
+            <if test="highQuality != null">
+                high_quality = #{highQuality,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectMerchant" resultMap="BaseResultMap" parameterType="quick.pager.pay.vo.admin.MerchantVO">
+        select
+        <include refid="Base_Column_List"/>
+        from t_merchant
+        <where>
+            delete_status = 0
+            <if test="merchantNo != null">
+                and merchant_no = #{merchantNo,jdbcType=VARCHAR}
+            </if>
+            <if test="mobile != null">
+                and mobile = #{mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="serverStatus != null">
+                and server_status = #{serverStatus,jdbcType=INTEGER}
+            </if>
+            <if test="bankName != null">
+                and bank_name = #{bankName,jdbcType=VARCHAR}
+            </if>
+            <if test="bankNum != null">
+                and bank_num = #{bankNum,jdbcType=VARCHAR}
+            </if>
+            <if test="beginTime != null and beginTime != ''">
+                and create_time &gt;= #{beginTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                and create_time &lt;= #{endTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="selectMerchantByMerchantNo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_merchant
+        <where>
+            delete_status = 0
+            <if test="merchantNo != null">
+                and merchant_no = #{merchantNo,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+</mapper>

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import quick.pager.pay.admin.service.OrderService;
 import quick.pager.pay.Constants;
-import quick.pager.pay.dto.admin.OrderDto;
+import quick.pager.pay.dto.admin.OrderDTO;
 import quick.pager.pay.request.admin.OrderRequest;
 import quick.pager.pay.response.Response;
 
@@ -25,7 +25,7 @@ public class OrderController {
     @PostMapping("/order/list")
     public Response orderList(OrderRequest request) {
 
-        OrderDto dto = new OrderDto();
+        OrderDTO dto = new OrderDTO();
         dto.setMerchantNo(request.getMerchantNo());
         dto.setOrderCode(request.getOrderCode());
         dto.setMerchantOrderCode(request.getMerchantOrderCode());

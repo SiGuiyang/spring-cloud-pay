@@ -9,7 +9,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.BaseDto;
+import quick.pager.pay.dto.BaseDTO;
 import quick.pager.pay.dto.admin.ChannelCenterDto;
 import quick.pager.pay.mapper.pay.PayChannelCenterMapper;
 import quick.pager.pay.mapper.user.UserMapper;
@@ -33,7 +33,7 @@ public class ChannelCenterService implements IService {
     private RedisService redisService;
 
     @Override
-    public Response doService(BaseDto dto) {
+    public Response doService(BaseDTO dto) {
         ChannelCenterDto channelCenterDto = (ChannelCenterDto) dto;
         Constants.Operation operation = channelCenterDto.getOperation();
 

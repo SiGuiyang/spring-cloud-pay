@@ -3,7 +3,7 @@ package quick.pager.pay.mapper.merchant;
 import org.apache.ibatis.annotations.Param;
 import quick.pager.pay.mapper.IMapper;
 import quick.pager.pay.model.merchant.Merchant;
-import quick.pager.pay.vo.MerchantVO;
+import quick.pager.pay.vo.admin.MerchantVO;
 
 import java.util.List;
 

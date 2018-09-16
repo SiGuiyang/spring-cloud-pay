@@ -3,7 +3,7 @@ package quick.pager.pay.request.admin;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import quick.pager.pay.request.Request;
+import quick.pager.pay.request.pay.Request;
 
 import java.util.List;
 

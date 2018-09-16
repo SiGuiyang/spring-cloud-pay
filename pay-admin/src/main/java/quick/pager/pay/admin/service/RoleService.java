@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.BaseDto;
-import quick.pager.pay.dto.admin.RoleDto;
+import quick.pager.pay.dto.BaseDTO;
+import quick.pager.pay.dto.admin.RoleDTO;
 import quick.pager.pay.mapper.user.RoleMapper;
-import quick.pager.pay.model.SystemConfig;
+import quick.pager.pay.model.common.SystemConfig;
 import quick.pager.pay.model.user.Role;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
@@ -29,21 +29,21 @@ public class RoleService implements IService {
 
 
     @Override
-    public Response doService(BaseDto dto) {
+    public Response doService(BaseDTO dto) {
 
-        RoleDto roleDto = (RoleDto) dto;
-        Constants.Operation operation = roleDto.getOperation();
+        RoleDTO roleDTO = (RoleDTO) dto;
+        Constants.Operation operation = roleDTO.getOperation();
         
         Response response = null;
         switch (operation){
             case list:
-                response = queryRoleList(roleDto);
+                response = queryRoleList(roleDTO);
                 break;
             case select:
-                response = roleInfo(roleDto.getId());
+                response = roleInfo(roleDTO.getId());
                 break;
             case update:
-                response = modifyRole(roleDto);
+                response = modifyRole(roleDTO);
                 break;
             case cache:
                 response = getRoleCodes();
@@ -57,7 +57,7 @@ public class RoleService implements IService {
     /**
      * 角色列表
      */
-    private Response queryRoleList(RoleDto dto) {
+    private Response queryRoleList(RoleDTO dto) {
         Integer pageNum = dto.getPageNum();
         Integer pageSize = dto.getPageSize();
 
@@ -90,7 +90,7 @@ public class RoleService implements IService {
     /**
      * 修改角色
      */
-    private Response modifyRole(RoleDto dto) {
+    private Response modifyRole(RoleDTO dto) {
 
         Role role = roleMapper.selectByPrimaryKey(dto.getId());
         // 添加

@@ -1,6 +1,6 @@
 package quick.pager.pay.service;
 
-import quick.pager.pay.dto.BaseDto;
+import quick.pager.pay.dto.BaseDTO;
 import quick.pager.pay.response.Response;
 
 /**
@@ -10,12 +10,12 @@ import quick.pager.pay.response.Response;
  *
  * @author siguiyang
  */
-public interface IService {
+public interface IService<T> {
 
     /**
      * 所有service都必须实现此接口
      *
      * @param dto 业务数据传输对象
      */
-    Response doService(BaseDto dto);
+    Response<T> doService(BaseDTO dto);
 }

@@ -3,7 +3,7 @@ package quick.pager.pay.model.pay;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import quick.pager.pay.model.IModel;
+import quick.pager.pay.model.common.IModel;
 
 /**
  * 支付中心渠道配置表<br />
