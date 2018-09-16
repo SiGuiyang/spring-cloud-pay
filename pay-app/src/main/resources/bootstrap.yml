@@ -14,3 +14,55 @@ management:
     web:
       exposure:
         exclude: refresh,health,info
+
+---
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8099/
+      label: master
+      profile: test
+  application:
+    name: pay-app
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: refresh,health,info
+
+---
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8099/
+      label: master
+      profile: uat
+  application:
+    name: pay-app
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: refresh,health,info
+
+
+---
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8099/
+      label: master
+      profile: prod
+  application:
+    name: pay-app
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: refresh,health,info

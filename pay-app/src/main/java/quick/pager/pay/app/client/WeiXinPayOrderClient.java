@@ -4,8 +4,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * 微信支付client
+ *
  * @author siguiyang
  */
-@FeignClient(value="${feign.client.node.weixin}")
+@FeignClient(value = "pay-weixin")
 public interface WeiXinPayOrderClient {
 }

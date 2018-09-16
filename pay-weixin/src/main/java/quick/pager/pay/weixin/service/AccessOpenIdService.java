@@ -24,7 +24,7 @@ import java.util.Map;
  */
 @Service
 @Slf4j
-public class AccessTokenService implements IService<MpPayDTO> {
+public class AccessOpenIdService implements IService<MpPayDTO> {
 
     @Autowired
     private OrderMapper orderMapper;

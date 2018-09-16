@@ -4,8 +4,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * 支付宝支付
+ *
  * @author siguiyang
  */
-@FeignClient(value="${feign.client.node.alipay}")
+@FeignClient(value = "pay-alipay")
 public interface AlipayPayOrderClient {
 }

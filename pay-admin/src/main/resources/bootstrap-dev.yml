@@ -1,4 +1,7 @@
 
+server:
+  port: 8090
+
 spring:
   cloud:
     config:
@@ -14,5 +17,66 @@ management:
     web:
       exposure:
         exclude: refresh,health,info
+
+---
+
 server:
   port: 8090
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8099/
+      label: master
+      profile: test
+  application:
+    name: pay-admin
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: refresh,health,info
+
+---
+
+server:
+  port: 8090
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8099/
+      label: master
+      profile: uat
+  application:
+    name: pay-admin
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: refresh,health,info
+
+---
+
+server:
+  port: 8090
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8099/
+      label: master
+      profile: prod
+  application:
+    name: pay-admin
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: refresh,health,info

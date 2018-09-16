@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import quick.pager.pay.request.pay.Request;
 import quick.pager.pay.response.Response;
 
-@FeignClient(value="${feign.client.node.alipay}")
-public interface TestClient {
-
-    @RequestMapping(value = "/spring/test",method = RequestMethod.POST)
-    Response test(Request request);
-
-    @RequestMapping(value = "/doTest",method = RequestMethod.POST)
-    Response doTest(@RequestParam("name") String name);
-}
+//@FeignClient(value="${feign.client.node.alipay}")
+//public interface TestClient {
+//
+//    @RequestMapping(value = "/spring/test",method = RequestMethod.POST)
+//    Response test(Request request);
+//
+//    @RequestMapping(value = "/doTest",method = RequestMethod.POST)
+//    Response doTest(@RequestParam("name") String name);
+//}

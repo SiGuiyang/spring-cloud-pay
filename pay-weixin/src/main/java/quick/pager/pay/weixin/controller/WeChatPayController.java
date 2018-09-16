@@ -14,7 +14,7 @@ import quick.pager.pay.dto.pay.WeChatPayDTO;
 import quick.pager.pay.dto.pay.WeChatVerifyDTO;
 import quick.pager.pay.request.pay.WeChatSubmitPayRequest;
 import quick.pager.pay.response.Response;
-import quick.pager.pay.weixin.service.AccessTokenService;
+import quick.pager.pay.weixin.service.AccessOpenIdService;
 import quick.pager.pay.weixin.service.MpPayService;
 import quick.pager.pay.weixin.service.WeChatRefundService;
 import quick.pager.pay.weixin.service.VerifySignService;
@@ -36,7 +36,7 @@ public class WeChatPayController {
     @Autowired
     private WeChatRefundService weChatRefundService;
     @Autowired
-    private AccessTokenService accessTokenService;
+    private AccessOpenIdService accessOpenIdService;
 
     /**
      * 微信提交订单<br />
@@ -83,7 +83,7 @@ public class WeChatPayController {
         dto.setCode(code);
         dto.setOrderCode(state);
 
-        Response<MpPayDTO> response = accessTokenService.doService(dto);
+        Response<MpPayDTO> response = accessOpenIdService.doService(dto);
 
         if (ResponseStatus.SUCCESS.code != response.getCode()) {
             request.setAttribute("msg", response.getMsg());
