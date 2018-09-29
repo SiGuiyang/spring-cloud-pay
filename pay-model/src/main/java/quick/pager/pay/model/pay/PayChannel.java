@@ -43,6 +43,10 @@ public class PayChannel extends IModel {
      */
     private String secureKey;
     /**
+     * 支付公钥
+     */
+    public String pubKey;
+    /**
      * 是否是当前节点<br />
      * true: 当前，反之亦然
      */

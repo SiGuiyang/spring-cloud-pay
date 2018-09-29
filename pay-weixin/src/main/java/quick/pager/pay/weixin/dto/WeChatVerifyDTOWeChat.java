@@ -1,9 +1,8 @@
-package quick.pager.pay.dto.pay;
+package quick.pager.pay.weixin.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import quick.pager.pay.dto.BaseDTO;
-import quick.pager.pay.dto.BasePayDTO;
+import quick.pager.pay.dto.BaseWeChatPayDTO;
 
 
 /**
@@ -11,7 +10,7 @@ import quick.pager.pay.dto.BasePayDTO;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class WeChatVerifyDTO extends BasePayDTO {
+public class WeChatVerifyDTOWeChat extends BaseWeChatPayDTO {
     private static final long serialVersionUID = 7295877036694394037L;
     /**
      * 应用授权作用域

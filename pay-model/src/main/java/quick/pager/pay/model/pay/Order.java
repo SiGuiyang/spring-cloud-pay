@@ -59,6 +59,11 @@ public class Order extends IModel {
      * 平台回调域名
      */
     private String platformNotifyUrl;
+
+    /**
+     * 返回地址
+     */
+    private String returnUrl;
     /**
      * 支付主体
      */

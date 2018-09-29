@@ -9,7 +9,7 @@ import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
 import quick.pager.pay.common.utils.SignUtils;
 import quick.pager.pay.dto.BaseDTO;
-import quick.pager.pay.dto.pay.WeChatVerifyDTO;
+import quick.pager.pay.weixin.dto.WeChatVerifyDTOWeChat;
 import quick.pager.pay.mapper.merchant.MerchantMapper;
 import quick.pager.pay.mapper.pay.OrderMapper;
 import quick.pager.pay.model.merchant.Merchant;
@@ -35,7 +35,7 @@ public class VerifySignService implements IService {
 
     @Override
     public Response doService(BaseDTO dto) {
-        WeChatVerifyDTO weChatVerifyDTO = (WeChatVerifyDTO) dto;
+        WeChatVerifyDTOWeChat weChatVerifyDTO = (WeChatVerifyDTOWeChat) dto;
         log.info("商户开始验签 merchantOrderNo = {}", weChatVerifyDTO.getOrderCode());
 
         Response<WeiXinSignVO> response = new Response<>();

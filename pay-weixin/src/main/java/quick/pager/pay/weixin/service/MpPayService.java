@@ -11,8 +11,8 @@ import quick.pager.pay.common.constants.ResponseStatus;
 import quick.pager.pay.common.utils.HttpClient;
 import quick.pager.pay.common.utils.SignUtils;
 import quick.pager.pay.dto.BaseDTO;
-import quick.pager.pay.dto.pay.PayConfigDTO;
-import quick.pager.pay.dto.pay.WeChatPayDTO;
+import quick.pager.pay.weixin.dto.WeChatPayConfigDTO;
+import quick.pager.pay.weixin.dto.WeChatPayDTO;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
 
@@ -25,9 +25,9 @@ import java.util.TreeMap;
  */
 @Service
 @Slf4j
-public class MpPayService implements IService<PayConfigDTO> {
+public class MpPayService implements IService<WeChatPayConfigDTO> {
     @Override
-    public Response<PayConfigDTO> doService(BaseDTO dto) {
+    public Response<WeChatPayConfigDTO> doService(BaseDTO dto) {
         WeChatPayDTO weChatPayDTO = (WeChatPayDTO) dto;
         log.info("进入公众号支付 orderCode = {}", weChatPayDTO.getOutTradeNo());
         log.info("公众号入参 params = {}", JSON.toJSONString(weChatPayDTO));
@@ -53,12 +53,12 @@ public class MpPayService implements IService<PayConfigDTO> {
 
         log.info("微信支付返回的结果 result = {}", result);
 
-        Response<PayConfigDTO> response = new Response<>();
+        Response<WeChatPayConfigDTO> response = new Response<>();
         // 处理微信返回的参数
         if (!StringUtils.isEmpty(result)) {
             Map<String, Object> toMap = XmlUtil.xmlToMap(result);
 
-            PayConfigDTO payConfigDTO = JSON.parseObject(JSON.toJSONString(toMap), PayConfigDTO.class);
+            WeChatPayConfigDTO payConfigDTO = JSON.parseObject(JSON.toJSONString(toMap), WeChatPayConfigDTO.class);
             String return_code = payConfigDTO.getReturn_code();
 
             if (return_code.equalsIgnoreCase(Constants.SUCCESS)) {

@@ -1,5 +1,6 @@
 package quick.pager.pay.request.pay;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @author siguiyang
  */
 @Data
+@ApiModel
 public class Request implements Serializable {
     private static final long serialVersionUID = 2245472883226265132L;
 

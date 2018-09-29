@@ -10,8 +10,8 @@ import quick.pager.pay.Constants;
 import quick.pager.pay.common.utils.HttpClient;
 import quick.pager.pay.common.utils.SignUtils;
 import quick.pager.pay.dto.BaseDTO;
-import quick.pager.pay.dto.pay.WeChatRefundDTO;
-import quick.pager.pay.dto.pay.WeChatRefundResponseDTO;
+import quick.pager.pay.weixin.dto.WeChatRefundDTOWeChat;
+import quick.pager.pay.weixin.dto.WeChatRefundResponseDTO;
 import quick.pager.pay.mapper.pay.OrderMapper;
 import quick.pager.pay.mapper.pay.PayChannelMapper;
 import quick.pager.pay.model.pay.Order;
@@ -36,7 +36,7 @@ public class WeChatRefundService implements IService {
 
     @Override
     public Response doService(BaseDTO dto) {
-        WeChatRefundDTO weChatRefundDTO = (WeChatRefundDTO) dto;
+        WeChatRefundDTOWeChat weChatRefundDTO = (WeChatRefundDTOWeChat) dto;
         log.info("退款服务入参 params = {}", JSON.toJSONString(weChatRefundDTO));
 
         Order order = orderMapper.selectOrderByOrderCode(weChatRefundDTO.getOrderCode());

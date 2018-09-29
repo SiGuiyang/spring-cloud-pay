@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class BasePayDTO extends BaseDTO {
+public abstract class BaseWeChatPayDTO extends BaseDTO {
     private static final long serialVersionUID = -4262300078280429735L;
     // 支付appid
     private String appId;

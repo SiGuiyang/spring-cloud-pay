@@ -9,8 +9,8 @@ import org.springframework.util.StringUtils;
 import quick.pager.pay.common.constants.ResponseStatus;
 import quick.pager.pay.common.utils.HttpClient;
 import quick.pager.pay.dto.BaseDTO;
-import quick.pager.pay.dto.pay.AccessTokenDTO;
-import quick.pager.pay.dto.pay.MpPayDTO;
+import quick.pager.pay.weixin.dto.AccessTokenDTO;
+import quick.pager.pay.weixin.dto.MpWeChatPayDTO;
 import quick.pager.pay.mapper.pay.OrderMapper;
 import quick.pager.pay.mapper.pay.PayChannelMapper;
 import quick.pager.pay.model.pay.Order;
@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @Service
 @Slf4j
-public class AccessOpenIdService implements IService<MpPayDTO> {
+public class AccessOpenIdService implements IService<MpWeChatPayDTO> {
 
     @Autowired
     private OrderMapper orderMapper;
@@ -33,7 +33,7 @@ public class AccessOpenIdService implements IService<MpPayDTO> {
     private PayChannelMapper payChannelMapper;
 
     @Override
-    public Response<MpPayDTO> doService(BaseDTO dto) {
+    public Response<MpWeChatPayDTO> doService(BaseDTO dto) {
 
         log.info("获取支付的access token 。。。。");
 
@@ -54,7 +54,7 @@ public class AccessOpenIdService implements IService<MpPayDTO> {
         Map<String, String> map = JSON.parseObject(result, Map.class);
 
         String openid = map.get("openid");
-        Response<MpPayDTO> response = new Response<>();
+        Response<MpWeChatPayDTO> response = new Response<>();
         if (StringUtils.isEmpty(openid)) {
             log.info("获取openId失败");
             response.setCode(ResponseStatus.PAY_OPENID_ERROR.code);
@@ -64,7 +64,7 @@ public class AccessOpenIdService implements IService<MpPayDTO> {
 
         log.info("获取支付 openId = {}", openid);
 
-        MpPayDTO payDTO = new MpPayDTO();
+        MpWeChatPayDTO payDTO = new MpWeChatPayDTO();
 
         payDTO.setAppId(payChannel.getAppId());
         payDTO.setSecret(payChannel.getSecureKey());

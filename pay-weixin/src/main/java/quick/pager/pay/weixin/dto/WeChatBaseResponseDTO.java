@@ -1,4 +1,4 @@
-package quick.pager.pay.dto.pay;
+package quick.pager.pay.weixin.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

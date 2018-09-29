@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.pay.AccessTokenDTO;
-import quick.pager.pay.dto.pay.MpPayDTO;
-import quick.pager.pay.dto.pay.PayConfigDTO;
-import quick.pager.pay.dto.pay.WeChatPayDTO;
-import quick.pager.pay.dto.pay.WeChatRefundDTO;
-import quick.pager.pay.dto.pay.WeChatVerifyDTO;
+import quick.pager.pay.weixin.dto.AccessTokenDTO;
+import quick.pager.pay.weixin.dto.MpWeChatPayDTO;
+import quick.pager.pay.weixin.dto.WeChatPayConfigDTO;
+import quick.pager.pay.weixin.dto.WeChatPayDTO;
+import quick.pager.pay.weixin.dto.WeChatRefundDTOWeChat;
+import quick.pager.pay.weixin.dto.WeChatVerifyDTOWeChat;
 import quick.pager.pay.request.pay.WeChatSubmitPayRequest;
 import quick.pager.pay.request.pay.WeiXinRefundRequest;
 import quick.pager.pay.response.Response;
@@ -50,7 +50,7 @@ public class WeChatPayController {
     @RequestMapping(value = "/wechat/pay/submit", method = RequestMethod.POST)
     public String paySubmit(HttpServletRequest httpServletRequest, WeChatSubmitPayRequest request) throws Exception {
 
-        WeChatVerifyDTO dto = new WeChatVerifyDTO();
+        WeChatVerifyDTOWeChat dto = new WeChatVerifyDTOWeChat();
 
         dto.setOrderCode(request.getOrderCode());
         dto.setNotifyUrl(request.getNotifyUrl());
@@ -89,7 +89,7 @@ public class WeChatPayController {
         dto.setCode(code);
         dto.setOrderCode(state);
         // 获取公众号支付的openId
-        Response<MpPayDTO> response = accessOpenIdService.doService(dto);
+        Response<MpWeChatPayDTO> response = accessOpenIdService.doService(dto);
 
         if (ResponseStatus.SUCCESS.code != response.getCode()) {
             request.setAttribute("msg", response.getMsg());
@@ -97,7 +97,7 @@ public class WeChatPayController {
         }
 
 
-        MpPayDTO data = response.getData();
+        MpWeChatPayDTO data = response.getData();
 
         WeChatPayDTO weChatPayDTO = new WeChatPayDTO();
         weChatPayDTO.setAppid(data.getAppId());
@@ -110,13 +110,13 @@ public class WeChatPayController {
         weChatPayDTO.setSpbillCreateIp(data.getClientIp());
 
         // 公众号支付
-        Response<PayConfigDTO> payResp = mpPayService.doService(weChatPayDTO);
+        Response<WeChatPayConfigDTO> payResp = mpPayService.doService(weChatPayDTO);
 
         if (ResponseStatus.SUCCESS.code != payResp.getCode()) {
             request.setAttribute("msg", payResp.getMsg());
             return "wechat-pay-error";
         }
-        PayConfigDTO payConfigDTO = payResp.getData();
+        WeChatPayConfigDTO payConfigDTO = payResp.getData();
         payConfigDTO.setSign_Type(Constants.SignType.MD5.name());
         payConfigDTO.setTimeStamp(System.currentTimeMillis() + "");
 
@@ -141,7 +141,7 @@ public class WeChatPayController {
             return "wechat-pay-error";
         }
 
-        WeChatVerifyDTO dto = new WeChatVerifyDTO();
+        WeChatVerifyDTOWeChat dto = new WeChatVerifyDTOWeChat();
         dto.setNotifyUrl(request.getNotifyUrl());
         dto.setOrderCode(request.getOrderCode());
         dto.setNonceStr(request.getNonceStr());
@@ -159,7 +159,7 @@ public class WeChatPayController {
         }
 
         // 开始请求退款
-        WeChatRefundDTO weChatRefundDTO = new WeChatRefundDTO();
+        WeChatRefundDTOWeChat weChatRefundDTO = new WeChatRefundDTOWeChat();
         weChatRefundDTO.setOrderCode(request.getOrderCode());
 
         weChatRefundService.doService(weChatRefundDTO);
