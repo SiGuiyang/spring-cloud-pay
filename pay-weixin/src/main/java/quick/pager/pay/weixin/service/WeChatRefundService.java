@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import quick.pager.pay.Constants;
 import quick.pager.pay.common.utils.HttpClient;
 import quick.pager.pay.common.utils.SignUtils;
-import quick.pager.pay.common.utils.XMLUtils;
 import quick.pager.pay.dto.BaseDTO;
 import quick.pager.pay.dto.pay.WeChatRefundDTO;
 import quick.pager.pay.dto.pay.WeChatRefundResponseDTO;
@@ -41,11 +40,12 @@ public class WeChatRefundService implements IService {
         log.info("退款服务入参 params = {}", JSON.toJSONString(weChatRefundDTO));
 
         Order order = orderMapper.selectOrderByOrderCode(weChatRefundDTO.getOrderCode());
+        PayChannel payChannel = payChannelMapper.selectPayChannelByPayType(order.getPayType());
 
         SortedMap<String, String> postmap = new TreeMap<>();
 
-        postmap.put("appid", weChatRefundDTO.getAppId());
-        postmap.put("mch_id", weChatRefundDTO.getMchId());
+        postmap.put("appid", payChannel.getAppId());
+        postmap.put("mch_id", payChannel.getMchId());
         postmap.put("nonce_str", RandomUtil.simpleUUID());
         postmap.put("out_refund_no", order.getOrderCode());
         postmap.put("out_trade_no", order.getOrderCode());
@@ -53,7 +53,6 @@ public class WeChatRefundService implements IService {
         postmap.put("total_fee", order.getPayAmount().toString());
         postmap.put("transaction_id", order.getTradeCode());
 
-        PayChannel payChannel = payChannelMapper.selectPayChannelByAppId(weChatRefundDTO.getAppId());
         String sign = SignUtils.getSign(Constants.SignType.MD5.name(), payChannel.getSecureKey(), postmap);
 
         postmap.put("sign", sign);

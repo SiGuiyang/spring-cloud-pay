@@ -1,7 +1,9 @@
 package quick.pager.pay.weixin.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,8 +13,10 @@ import quick.pager.pay.dto.pay.AccessTokenDTO;
 import quick.pager.pay.dto.pay.MpPayDTO;
 import quick.pager.pay.dto.pay.PayConfigDTO;
 import quick.pager.pay.dto.pay.WeChatPayDTO;
+import quick.pager.pay.dto.pay.WeChatRefundDTO;
 import quick.pager.pay.dto.pay.WeChatVerifyDTO;
 import quick.pager.pay.request.pay.WeChatSubmitPayRequest;
+import quick.pager.pay.request.pay.WeiXinRefundRequest;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.weixin.service.AccessOpenIdService;
 import quick.pager.pay.weixin.service.MpPayService;
@@ -22,11 +26,12 @@ import quick.pager.pay.weixin.service.VerifySignService;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 微信H5支付
+ * 微信支付
  *
  * @author siguiyang
  */
 @Controller
+@Slf4j
 public class WeChatPayController {
 
     @Autowired
@@ -43,24 +48,23 @@ public class WeChatPayController {
      * 此处验签
      */
     @RequestMapping(value = "/wechat/pay/submit", method = RequestMethod.POST)
-    public String paySubmit(WeChatSubmitPayRequest request) throws Exception {
+    public String paySubmit(HttpServletRequest httpServletRequest, WeChatSubmitPayRequest request) throws Exception {
 
         WeChatVerifyDTO dto = new WeChatVerifyDTO();
 
         dto.setOrderCode(request.getOrderCode());
         dto.setNotifyUrl(request.getNotifyUrl());
-        dto.setAppId(request.getAppId());
-        dto.setMchId(request.getMchId());
         dto.setNonceStr(request.getNonceStr());
         dto.setScope(request.getScope());
         dto.setTimestamp(request.getTimestamp());
         dto.setSign(request.getSign());
-
+        // 对参数开始验证签名
         Response response = verifySignService.doService(dto);
 
         StringBuffer buffer = new StringBuffer("redirect:");
         // 验证签名成功
         if (ResponseStatus.SUCCESS.code == response.getCode()) {
+            // 重定向到微信获取授权码
             buffer.append("https://open.weixin.qq.com/connect/oauth2/authorize?appid=").append("")
                     .append("&").append("redirect_uri").append("=").append("")
                     .append("&").append("response_type").append("=").append("code")
@@ -69,7 +73,9 @@ public class WeChatPayController {
                     .append("#").append("wechat_redirect");
             return buffer.toString();
         }
-        return buffer.append("/wechat-pay-error").append("?msg=").append(response.getMsg()).toString();
+
+        httpServletRequest.setAttribute("msg", response.getMsg());
+        return "wechat-pay-error";
     }
 
     /**
@@ -82,7 +88,7 @@ public class WeChatPayController {
         AccessTokenDTO dto = new AccessTokenDTO();
         dto.setCode(code);
         dto.setOrderCode(state);
-
+        // 获取公众号支付的openId
         Response<MpPayDTO> response = accessOpenIdService.doService(dto);
 
         if (ResponseStatus.SUCCESS.code != response.getCode()) {
@@ -123,21 +129,72 @@ public class WeChatPayController {
      * 退款
      */
     @PostMapping("/wechat/refund")
-    public Response refund(WeChatSubmitPayRequest request) {
+    public String refund(HttpServletRequest httpServletRequest, WeiXinRefundRequest request) {
+
+        // 验证入参
+        Response<String> checkResponse = checkRefundParams(request);
+
+        if (ResponseStatus.SUCCESS.code != checkResponse.getCode()) {
+
+            httpServletRequest.setAttribute("msg", checkResponse.getMsg());
+
+            return "wechat-pay-error";
+        }
 
         WeChatVerifyDTO dto = new WeChatVerifyDTO();
-
+        dto.setNotifyUrl(request.getNotifyUrl());
         dto.setOrderCode(request.getOrderCode());
-        dto.setAppId(request.getAppId());
-        dto.setMchId(request.getMchId());
         dto.setNonceStr(request.getNonceStr());
-        dto.setScope(request.getScope());
         dto.setTimestamp(request.getTimestamp());
         dto.setSign(request.getSign());
 
+        //  验证签名
         Response response = verifySignService.doService(dto);
 
-        weChatRefundService.doService(null);
-        return null;
+        // 验签成功
+        if (ResponseStatus.SUCCESS.code != response.getCode()) {
+
+            httpServletRequest.setAttribute("msg", response.getMsg());
+            return "wechat-pay-error";
+        }
+
+        // 开始请求退款
+        WeChatRefundDTO weChatRefundDTO = new WeChatRefundDTO();
+        weChatRefundDTO.setOrderCode(request.getOrderCode());
+
+        weChatRefundService.doService(weChatRefundDTO);
+
+        return "";
+    }
+
+    /**
+     * 检查微信退款入参校验
+     *
+     * @param request 入参
+     */
+    private Response<String> checkRefundParams(WeiXinRefundRequest request) {
+
+
+        if (StringUtils.isEmpty(request.getNonceStr())) {
+            log.info("请求唯一标志不能为空");
+            return new Response<>(ResponseStatus.CHECK_PARAMS_NONCE_STR.code, ResponseStatus.CHECK_PARAMS_NONCE_STR.msg);
+        }
+        if (StringUtils.isEmpty(request.getOrderCode())) {
+            log.info("平台商户订单号不能为空");
+            return new Response<>(ResponseStatus.CHECK_PARAMS_ORDER_CODE.code, ResponseStatus.CHECK_PARAMS_ORDER_CODE.msg);
+
+        }
+        if (StringUtils.isEmpty(request.getTimestamp())) {
+            log.info("请求时间戳不能为空");
+            return new Response<>(ResponseStatus.CHECK_PARAMS_TIMESTAMP.code, ResponseStatus.CHECK_PARAMS_TIMESTAMP.msg);
+
+        }
+        if (StringUtils.isEmpty(request.getSign())) {
+            log.info("请求支付签名不能为空");
+            return new Response<>(ResponseStatus.CHECK_PARAMS_SIGN.code, ResponseStatus.CHECK_PARAMS_SIGN.msg);
+
+        }
+
+        return new Response<>();
     }
 }

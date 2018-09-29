@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import quick.pager.pay.common.constants.ResponseStatus;
 import quick.pager.pay.common.utils.HttpClient;
 import quick.pager.pay.dto.BaseDTO;
@@ -54,7 +55,7 @@ public class AccessOpenIdService implements IService<MpPayDTO> {
 
         String openid = map.get("openid");
         Response<MpPayDTO> response = new Response<>();
-        if (null == openid) {
+        if (StringUtils.isEmpty(openid)) {
             log.info("获取openId失败");
             response.setCode(ResponseStatus.PAY_OPENID_ERROR.code);
             response.setMsg(ResponseStatus.PAY_OPENID_ERROR.msg);

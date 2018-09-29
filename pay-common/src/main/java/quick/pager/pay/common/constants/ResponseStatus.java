@@ -34,10 +34,15 @@ public enum ResponseStatus {
     UNKNOWN_PAY_SIGN_TYPE(3007, "未知支付签名"),
     UNKNOWN_PAY_TIMESTAMP(3008, "未知支付时间戳"),
     UNKNOWN_PAY_TYPE(3009, "未知支付类型"),
+    UNKNOWN_PAY_CHANNEL(3010,"未知支付渠道"),
     PAY_SIGN_NOT_CORRECT(4000, "签名不正确"),
     PAY_OPENID_ERROR(4001, "公众号openId失效"),
     PAY_WECHAT_FAIL(4002,"微信支付失败"),
-    PAY_WECHAT_COMMUNICATION(4003,"微信支付通讯异常");
+    PAY_WECHAT_COMMUNICATION(4003,"微信支付通讯异常"),
+    CHECK_PARAMS_SIGN(5000,"签名为空"),
+    CHECK_PARAMS_TIMESTAMP(5001,"请求时间戳为空"),
+    CHECK_PARAMS_NONCE_STR(5002,"请求唯一标志为空"),
+    CHECK_PARAMS_ORDER_CODE(5003,"请求平台订单号为空");
 
     public int code;
 

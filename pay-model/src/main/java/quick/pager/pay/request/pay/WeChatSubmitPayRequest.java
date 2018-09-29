@@ -17,10 +17,6 @@ import java.math.BigDecimal;
 public class WeChatSubmitPayRequest implements Serializable {
     private static final long serialVersionUID = -8866298241183396595L;
 
-    @ApiModelProperty("公众账号ID")
-    private String appId;
-    @ApiModelProperty("商户号")
-    private String mchId;
     @ApiModelProperty(value = "订单号，平台的订单号")
     private String orderCode;
     @ApiModelProperty("签名")
@@ -36,7 +32,7 @@ public class WeChatSubmitPayRequest implements Serializable {
      * snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且， 即使在未关注的情况下，只要用户授权，也能获取其信息 ）
      */
     @ApiModelProperty("应用授权作用域")
-    private String scope;
+    private String scope = "snsapi_base";
     @ApiModelProperty("订单金额")
     private BigDecimal amount;
     @ApiModelProperty("随机字符串")

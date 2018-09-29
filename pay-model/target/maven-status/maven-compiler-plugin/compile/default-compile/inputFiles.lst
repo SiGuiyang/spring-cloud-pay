@@ -2,6 +2,7 @@
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/admin/PermissionDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/TokenDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/request/pay/Request.java
+/Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/pay/WeChatBaseResponseDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/request/pay/WeChatSubmitPayRequest.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/admin/OrderDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/model/pay/PayChannelCenter.java
@@ -10,13 +11,14 @@
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/request/pay/QueryOrderRequest.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/model/pay/TradeOrder.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/admin/MenuDTO.java
-/Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/pay/WeChatSubmitPayDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/BasePayDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/request/admin/ConfigRequest.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/pay/ChannelDTO.java
+/Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/model/pay/InterfaceUrl.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/actor/RefundActorDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/vo/pay/SubmitPayVO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/admin/ChannelDTO.java
+/Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/pay/WeChatVerifyDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/service/IService.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/response/PayResponse.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/model/common/IModel.java
@@ -44,6 +46,7 @@
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/vo/admin/UserVO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/pay/AccessTokenDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/pay/SubmitPayDTO.java
+/Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/pay/WeChatRefundDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/vo/admin/AdminVO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/model/merchant/Merchant.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/model/pay/Order.java
@@ -59,6 +62,8 @@
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/request/pay/RefundRequest.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/model/user/Resources.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/model/common/package-info.java
+/Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/pay/WeChatSubmitDTO.java
+/Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/pay/WeChatRefundResponseDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/dto/admin/ConfigDTO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/vo/pay/WeiXinSignVO.java
 /Users/siguiyang/IdeaProjects/spring-cloud-pay/pay-model/src/main/java/quick/pager/pay/model/common/CloudStorage.java

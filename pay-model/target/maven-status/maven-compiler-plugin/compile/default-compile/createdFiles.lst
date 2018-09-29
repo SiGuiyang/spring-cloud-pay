@@ -27,6 +27,7 @@ quick/pager/pay/dto/admin/MenuDTO.class
 quick/pager/pay/response/PayResponse.class
 quick/pager/pay/model/common/IModel.class
 quick/pager/pay/Constants$NotificationStatus.class
+quick/pager/pay/dto/pay/WeChatRefundResponseDTO.class
 quick/pager/pay/request/pay/RefundRequest$RefundRequestBuilder.class
 quick/pager/pay/request/pay/Request.class
 quick/pager/pay/dto/admin/ChannelDTO.class
@@ -40,10 +41,11 @@ quick/pager/pay/dto/BaseDTO.class
 quick/pager/pay/vo/admin/OrderVO.class
 quick/pager/pay/dto/admin/ConfigDTO.class
 quick/pager/pay/model/pay/TradeOrder.class
+quick/pager/pay/dto/pay/WeChatRefundDTO.class
+quick/pager/pay/dto/pay/WeChatVerifyDTO.class
 quick/pager/pay/Constants$Reg.class
 quick/pager/pay/dto/actor/TestDTO.class
 quick/pager/pay/Constants$TradeType.class
-quick/pager/pay/dto/pay/WeChatSubmitPayDTO.class
 quick/pager/pay/dto/admin/RoleDTO.class
 quick/pager/pay/dto/pay/AccessTokenDTO.class
 quick/pager/pay/model/user/RoleResources.class
@@ -62,11 +64,13 @@ quick/pager/pay/dto/pay/ChannelDTO$ChannelDTOBuilder.class
 quick/pager/pay/request/admin/OrderRequest.class
 quick/pager/pay/dto/pay/QueryOrderDTO$QueryOrderDTOBuilder.class
 quick/pager/pay/model/user/UserRole.class
+quick/pager/pay/dto/pay/WeChatBaseResponseDTO.class
 quick/pager/pay/dto/BasePayDTO.class
 quick/pager/pay/Constants$DatabaseColumn.class
 quick/pager/pay/request/pay/WeiXinRefundRequest.class
 quick/pager/pay/model/user/Role.class
 quick/pager/pay/model/merchant/Merchant.class
+quick/pager/pay/dto/pay/WeChatSubmitDTO.class
 quick/pager/pay/response/PayResponse$PayResponseBuilder.class
 quick/pager/pay/vo/admin/MenuVO.class
 quick/pager/pay/model/common/CloudStorage.class
@@ -82,6 +86,7 @@ quick/pager/pay/dto/actor/RefundActorDTO.class
 quick/pager/pay/request/admin/MerchantRequest.class
 quick/pager/pay/vo/admin/UserVO.class
 quick/pager/pay/vo/admin/ResourceVO.class
+quick/pager/pay/model/pay/InterfaceUrl.class
 quick/pager/pay/Constants$SignType.class
 quick/pager/pay/request/pay/RefundRequest.class
 quick/pager/pay/Constants.class

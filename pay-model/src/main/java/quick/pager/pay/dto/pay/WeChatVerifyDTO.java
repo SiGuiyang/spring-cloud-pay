@@ -3,6 +3,7 @@ package quick.pager.pay.dto.pay;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import quick.pager.pay.dto.BaseDTO;
+import quick.pager.pay.dto.BasePayDTO;
 
 
 /**
@@ -10,24 +11,8 @@ import quick.pager.pay.dto.BaseDTO;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class WeChatVerifyDTO extends BaseDTO {
+public class WeChatVerifyDTO extends BasePayDTO {
     private static final long serialVersionUID = 7295877036694394037L;
-    /**
-     * 公众账号ID
-     */
-    private String appId;
-    /**
-     * 商户号
-     */
-    private String mchId;
-    /**
-     * 回调通知地址
-     */
-    private String notifyUrl;
-    /**
-     * 订单号
-     */
-    private String orderCode;
     /**
      * 应用授权作用域
      */
@@ -40,10 +25,6 @@ public class WeChatVerifyDTO extends BaseDTO {
      * 当前支付时间戳
      */
     private String timestamp;
-    /**
-     * 签名
-     */
-    private String sign;
 
 
 }

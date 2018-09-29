@@ -30,5 +30,9 @@ public class BasePayDTO extends BaseDTO {
     private String platformNotifyUrl;
     // 支付主题
     private String body;
+    /**
+     * 签名
+     */
+    private String sign;
 
 }
