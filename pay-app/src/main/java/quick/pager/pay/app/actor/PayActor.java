@@ -8,6 +8,7 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import quick.pager.pay.Constants;
+import quick.pager.pay.app.config.SpringContext;
 import quick.pager.pay.app.function.DeferredResultFunction;
 import quick.pager.pay.dto.pay.ChannelDTO;
 import quick.pager.pay.dto.pay.SubmitPayDTO;
@@ -50,9 +51,7 @@ public class PayActor extends AbstractActor {
             ChannelDTO channelDTO = ChannelDTO.builder().build();
 
             // 获取返回的支付渠道
-            ActorExecutor.execute(ChannelActor.class, "channel-actor", channelDTO, (DeferredResultFunction<PayResponse, Response>) (failure, result, response) -> {
-
-            });
+//            context().actorOf()actorOf
 
             sender().tell("",self());
 

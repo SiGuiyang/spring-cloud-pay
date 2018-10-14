@@ -1,6 +1,8 @@
 package quick.pager.pay.app.actor;
 
 import akka.actor.AbstractActor;
+import akka.actor.Actor;
+import akka.actor.ActorContext;
 import akka.actor.ActorRef;
 import akka.dispatch.Mapper;
 import akka.dispatch.OnComplete;
@@ -58,6 +60,18 @@ public class ActorExecutor {
             }
         }, SpringContext.dispatcher());
         return result;
+    }
+
+    /**
+     * actor 内部执行通信
+     * @param context 自身actorContext
+     * @param clazz 执行的Spring actor 的class对象
+     * @param obj 传递的值
+     */
+    public static Object execute(ActorContext context, Class<? extends Actor> clazz, Object obj) {
+        ActorRef actorRef = context.actorOf(SpringContext.props(clazz));
+
+        return Patterns.ask(actorRef, obj, new Timeout(Duration.create(30000L, TimeUnit.SECONDS)));
     }
 
 }

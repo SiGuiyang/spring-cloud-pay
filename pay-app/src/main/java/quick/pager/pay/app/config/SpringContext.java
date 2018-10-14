@@ -44,7 +44,7 @@ public class SpringContext implements ApplicationContextAware {
         return getActorSystem().dispatcher();
     }
 
-    private static Props props(Class<? extends Actor> requireType) {
+    public static Props props(Class<? extends Actor> requireType) {
         return Props.create(SpringActorProducer.class, applicationContext, requireType);
     }
 
