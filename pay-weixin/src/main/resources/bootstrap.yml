@@ -3,77 +3,17 @@ server:
   port: 8092
 
 spring:
-  cloud:
-    config:
-      uri: http://localhost:8099/
-      label: master
-      profile: dev
+#  cloud:
+#    config:
+#      uri: http://localhost:8099/
+#      label: master
+#      profile: dev
   application:
-    name: pay-admin
+    name: pay-weixin
 
 
 management:
   endpoints:
     web:
       exposure:
-        exclude: refresh,health,info
-
----
-
-server:
-  port: 8092
-
-spring:
-  cloud:
-    config:
-      uri: http://localhost:8099/
-      label: master
-      profile: test
-  application:
-    name: pay-admin
-
-management:
-  endpoints:
-    web:
-      exposure:
-        exclude: refresh,health,info
-
----
-server:
-  port: 8092
-
-spring:
-  cloud:
-    config:
-      uri: http://localhost:8099/
-      label: master
-      profile: uat
-  application:
-    name: pay-admin
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        exclude: refresh,health,info
-
----
-server:
-  port: 8092
-
-spring:
-  cloud:
-    config:
-      uri: http://localhost:8099/
-      label: master
-      profile: prod
-  application:
-    name: pay-admin
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        exclude: refresh,health,info
+        include: refresh,health,info

@@ -17,7 +17,7 @@ import quick.pager.pay.app.exception.PayException;
 import quick.pager.pay.app.function.DeferredResultFunction;
 import quick.pager.pay.app.service.VerifyService;
 import quick.pager.pay.common.constants.ResponseStatus;
-import quick.pager.pay.dto.pay.SubmitPayDTO;
+import quick.pager.pay.app.dto.SubmitPayDTO;
 import quick.pager.pay.request.pay.PayRequest;
 import quick.pager.pay.request.pay.QueryOrderRequest;
 import quick.pager.pay.request.pay.RefundRequest;
@@ -59,20 +59,23 @@ public class PayController {
         submit.setSignType(request.getSignType());
         submit.setTimestamp(request.getTimestamp());
         // 验证签名与商户存在判断
-        Response resp = verifyService.doService(submit);
-        // 如果验证签名不同过，则直接返回
-        if (ResponseStatus.SUCCESS.code != resp.getCode()) {
-            DeferredResult<Response> result = new DeferredResult<>();
-            result.setResult(resp);
-            return result;
-        }
+//        Response resp = verifyService.doService(submit);
+//        // 如果验证签名不同过，则直接返回
+//        if (ResponseStatus.SUCCESS.code != resp.getCode()) {
+//            DeferredResult<Response> result = new DeferredResult<>();
+//            result.setResult(resp);
+//            return result;
+//        }
+        DeferredResult<Response> deferredResult = new DeferredResult<>();
         // 使用akka执行线程
         ActorExecutor.execute(PayActor.class, "pay-actor", submit, (DeferredResultFunction<PayResponse, Response>) (failure, result, response) -> {
-
+            Response resp = new Response();
+            resp.setMsg(result.getMerchantNo());
+            deferredResult.setResult(resp);
         });
 
 
-        return null;
+        return deferredResult;
     }
 
     /**

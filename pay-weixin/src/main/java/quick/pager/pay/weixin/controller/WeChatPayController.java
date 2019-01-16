@@ -47,9 +47,10 @@ public class WeChatPayController {
      * 微信提交订单<br />
      * 此处验签
      */
-    @RequestMapping(value = "/wechat/pay/submit", method = RequestMethod.POST)
+    @RequestMapping(value = "/pay", method = RequestMethod.POST)
     public String paySubmit(HttpServletRequest httpServletRequest, WeChatSubmitPayRequest request) throws Exception {
 
+        System.out.println("weChat pay.....");
         WeChatVerifyDTOWeChat dto = new WeChatVerifyDTOWeChat();
 
         dto.setOrderCode(request.getOrderCode());
@@ -63,16 +64,16 @@ public class WeChatPayController {
 
         StringBuffer buffer = new StringBuffer("redirect:");
         // 验证签名成功
-        if (ResponseStatus.SUCCESS.code == response.getCode()) {
-            // 重定向到微信获取授权码
-            buffer.append("https://open.weixin.qq.com/connect/oauth2/authorize?appid=").append("")
-                    .append("&").append("redirect_uri").append("=").append("")
-                    .append("&").append("response_type").append("=").append("code")
-                    .append("&").append("scope").append("=").append(request.getScope())
-                    .append("&").append("state").append("=").append(request.getOrderCode())
-                    .append("#").append("wechat_redirect");
-            return buffer.toString();
-        }
+//        if (ResponseStatus.SUCCESS.code == response.getCode()) {
+//            // 重定向到微信获取授权码
+//            buffer.append("https://open.weixin.qq.com/connect/oauth2/authorize?appid=").append("")
+//                    .append("&").append("redirect_uri").append("=").append("")
+//                    .append("&").append("response_type").append("=").append("code")
+//                    .append("&").append("scope").append("=").append(request.getScope())
+//                    .append("&").append("state").append("=").append(request.getOrderCode())
+//                    .append("#").append("wechat_redirect");
+//            return buffer.toString();
+//        }
 
         httpServletRequest.setAttribute("msg", response.getMsg());
         return "wechat-pay-error";
@@ -128,7 +129,7 @@ public class WeChatPayController {
     /**
      * 退款
      */
-    @PostMapping("/wechat/refund")
+    @PostMapping("/refund")
     public String refund(HttpServletRequest httpServletRequest, WeiXinRefundRequest request) {
 
         // 验证入参

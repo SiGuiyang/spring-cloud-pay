@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: pay-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:${connection.server.port}/eureka/
+
+connection:
+  server:
+    port: 8761

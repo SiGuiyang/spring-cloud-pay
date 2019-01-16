@@ -4,15 +4,10 @@ import cn.hutool.core.util.URLUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.google.common.base.Joiner;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 import quick.pager.pay.Constants;
-import quick.pager.pay.common.constants.ResponseStatus;
 import quick.pager.pay.dto.BaseDTO;
-import quick.pager.pay.dto.pay.SubmitPayDTO;
-import quick.pager.pay.mapper.merchant.MerchantMapper;
-import quick.pager.pay.model.merchant.Merchant;
+import quick.pager.pay.app.dto.SubmitPayDTO;
 import quick.pager.pay.response.Response;
 import quick.pager.pay.service.IService;
 
@@ -28,8 +23,8 @@ import java.util.TreeMap;
 @Slf4j
 public class VerifyService implements IService {
 
-    @Autowired
-    private MerchantMapper merchantMapper;
+//    @Autowired
+//    private MerchantMapper merchantMapper;
 
     @Override
     public Response doService(BaseDTO dto) {
@@ -54,23 +49,23 @@ public class VerifyService implements IService {
 
         String join = Joiner.on("&").withKeyValueSeparator("=").join(postMap);
 
-        Merchant merchant = merchantMapper.selectMerchantByMerchantNo(submit.getMerchantNo());
-        // 判断商户是否存在
-        if (ObjectUtils.isEmpty(merchant)) {
-            return Response.builder().code(ResponseStatus.UNKNOWN_PAY_MERCHANT_NO.code).msg(ResponseStatus.UNKNOWN_PAY_MERCHANT_ORDER_CODE.msg).build();
-        }
-
-        String originSign = getSign(new StringBuilder(join), merchant.getPrivateKey(), submit.getSignType());
-
-        if (!originSign.equals(submit.getSign())) {
-            log.warn("商户签名与平台签名不匹配 sign = {},originSign = {}", submit.getSign(), originSign);
-            response.setCode(ResponseStatus.PAY_SIGN_NOT_CORRECT.code);
-            response.setMsg(ResponseStatus.PAY_SIGN_NOT_CORRECT.msg);
-            return response;
-
-        }
-
-        response.setData(submit);
+//        Merchant merchant = merchantMapper.selectMerchantByMerchantNo(submit.getMerchantNo());
+//        // 判断商户是否存在
+//        if (ObjectUtils.isEmpty(merchant)) {
+//            return Response.builder().code(ResponseStatus.UNKNOWN_PAY_MERCHANT_NO.code).msg(ResponseStatus.UNKNOWN_PAY_MERCHANT_ORDER_CODE.msg).build();
+//        }
+//
+//        String originSign = getSign(new StringBuilder(join), merchant.getPrivateKey(), submit.getSignType());
+//
+//        if (!originSign.equals(submit.getSign())) {
+//            log.warn("商户签名与平台签名不匹配 sign = {},originSign = {}", submit.getSign(), originSign);
+//            response.setCode(ResponseStatus.PAY_SIGN_NOT_CORRECT.code);
+//            response.setMsg(ResponseStatus.PAY_SIGN_NOT_CORRECT.msg);
+//            return response;
+//
+//        }
+//
+//        response.setData(submit);
 
         return response;
     }
@@ -78,7 +73,7 @@ public class VerifyService implements IService {
     /**
      * 获取签名
      *
-     * @param builder    springbuilder
+     * @param builder    builder
      * @param privateKey 商户签名密钥
      * @param signType   签名方法
      */

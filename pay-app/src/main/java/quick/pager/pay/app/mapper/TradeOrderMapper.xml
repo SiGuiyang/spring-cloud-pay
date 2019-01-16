@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="quick.pager.pay.app.mapper.TradeOrderMapper">
+  <resultMap id="BaseResultMap" type="quick.pager.pay.model.pay.TradeOrder">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="merchant_no" jdbcType="VARCHAR" property="merchantNo" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="trade_code" jdbcType="VARCHAR" property="tradeCode" />
+    <result column="trade_amount" jdbcType="DECIMAL" property="tradeAmount" />
+    <result column="rate_amount" jdbcType="DECIMAL" property="rateAmount" />
+    <result column="deduction_amount" jdbcType="DECIMAL" property="deductionAmount" />
+    <result column="trade_status" jdbcType="INTEGER" property="tradeStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, merchant_no, pay_type, trade_code, trade_amount, rate_amount, deduction_amount, 
+    trade_status, create_time, update_time, delete_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_trade_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <insert id="insertSelective" parameterType="quick.pager.pay.model.pay.TradeOrder">
+    insert into t_trade_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="merchantNo != null">
+        merchant_no,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="tradeCode != null">
+        trade_code,
+      </if>
+      <if test="tradeAmount != null">
+        trade_amount,
+      </if>
+      <if test="rateAmount != null">
+        rate_amount,
+      </if>
+      <if test="deductionAmount != null">
+        deduction_amount,
+      </if>
+      <if test="tradeStatus != null">
+        trade_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="merchantNo != null">
+        #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeCode != null">
+        #{tradeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeAmount != null">
+        #{tradeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="rateAmount != null">
+        #{rateAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="deductionAmount != null">
+        #{deductionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeStatus != null">
+        #{tradeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="quick.pager.pay.model.pay.TradeOrder">
+    update t_trade_order
+    <set>
+      <if test="merchantNo != null">
+        merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeCode != null">
+        trade_code = #{tradeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeAmount != null">
+        trade_amount = #{tradeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="rateAmount != null">
+        rate_amount = #{rateAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="deductionAmount != null">
+        deduction_amount = #{deductionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeStatus != null">
+        trade_status = #{tradeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteStatus != null">
+        delete_status = #{deleteStatus,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>

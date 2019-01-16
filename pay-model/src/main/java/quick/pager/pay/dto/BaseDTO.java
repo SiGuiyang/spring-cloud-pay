@@ -22,13 +22,13 @@ public class BaseDTO extends DTO {
     @ApiModelProperty(value = "服务状态")
     private Integer serverStatus;
     @ApiModelProperty(value = "起始时间")
-    private long beginTime;
+    private String beginTime;
     @ApiModelProperty(value = "结束时间")
-    private long endTime;
+    private String endTime;
     @ApiModelProperty(value = "一页的大小")
     private Integer pageSize;
     @ApiModelProperty(value = "页码")
     private Integer pageNum;
 
-    private Constants.Operation operation;
+    private String event;
 }

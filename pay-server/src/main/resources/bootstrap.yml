@@ -1,0 +1,7 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info
+server:
+  port: 8761

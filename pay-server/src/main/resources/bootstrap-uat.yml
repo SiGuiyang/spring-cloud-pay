@@ -8,13 +8,3 @@ spring:
   application:
     name: pay-server
 
-
-management:
-  endpoints:
-    web:
-      exposure:
-        exclude: refresh,health,info
-server:
-  port: 8761
-
-

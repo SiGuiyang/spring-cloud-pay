@@ -1,0 +1,10 @@
+
+server:
+  port: 8099
+
+zuul:
+  routes:
+    users:
+      path: /test/**
+      serviceId: https://www.baidu.com/
+      stripPrefix: false

@@ -2,11 +2,11 @@ server:
   port: 8091
 
 spring:
-  cloud:
-    config:
-      uri: http://localhost:8099/
-      label: master
-      profile: dev
+#  cloud:
+#    config:
+#      uri: http://localhost:8099/
+#      label: master
+#      profile: dev
   application:
     name: pay-alipay
 
@@ -15,65 +15,4 @@ management:
   endpoints:
     web:
       exposure:
-        exclude: refresh,health,info
-
----
-server:
-  port: 8091
-
-spring:
-  cloud:
-    config:
-      uri: http://localhost:8099/
-      label: master
-      profile: test
-  application:
-    name: pay-alipay
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        exclude: refresh,health,info
-
-
----
-server:
-  port: 8091
-
-spring:
-  cloud:
-    config:
-      uri: http://localhost:8099/
-      label: master
-      profile: uat
-  application:
-    name: pay-alipay
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        exclude: refresh,health,info
-
----
-server:
-  port: 8091
-
-spring:
-  cloud:
-    config:
-      uri: http://localhost:8099/
-      label: master
-      profile: prod
-  application:
-    name: pay-alipay
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        exclude: refresh,health,info
+        include: refresh,health,info

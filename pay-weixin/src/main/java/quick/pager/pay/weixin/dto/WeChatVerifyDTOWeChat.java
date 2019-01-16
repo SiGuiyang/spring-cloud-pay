@@ -2,7 +2,6 @@ package quick.pager.pay.weixin.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import quick.pager.pay.dto.BaseWeChatPayDTO;
 
 
 /**

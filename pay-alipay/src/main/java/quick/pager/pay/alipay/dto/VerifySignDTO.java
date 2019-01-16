@@ -2,7 +2,6 @@ package quick.pager.pay.alipay.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import quick.pager.pay.dto.BaseAlipayDTO;
 
 /**
  * 支付宝验证签名

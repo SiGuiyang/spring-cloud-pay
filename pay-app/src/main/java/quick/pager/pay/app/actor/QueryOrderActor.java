@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-import quick.pager.pay.dto.pay.QueryOrderDTO;
+import quick.pager.pay.app.dto.QueryOrderDTO;
 
 /**
  * 查询订单actor

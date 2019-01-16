@@ -1,20 +1,19 @@
 
 spring:
-  cloud:
-    config:
-      uri: http://localhost:8099/
-      label: master
-      profile: dev
+#  cloud:
+#    config:
+#      uri: http://localhost:8099/
+#      label: master
+#      profile: dev
   application:
     name: pay-server
 
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka/
 
-management:
-  endpoints:
-    web:
-      exposure:
-        exclude: refresh,health,info
-server:
-  port: 8761
 
 

@@ -12,6 +12,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 import quick.pager.pay.app.config.SpringContext;
 import quick.pager.pay.app.function.DeferredResultFunction;
 import quick.pager.pay.dto.DTO;
+import scala.concurrent.Await;
 import scala.concurrent.Future;
 import scala.concurrent.duration.Duration;
 
@@ -64,14 +65,16 @@ public class ActorExecutor {
 
     /**
      * actor 内部执行通信
+     *
      * @param context 自身actorContext
-     * @param clazz 执行的Spring actor 的class对象
-     * @param obj 传递的值
+     * @param clazz   执行的Spring actor 的class对象
+     * @param obj     传递的值
      */
-    public static Object execute(ActorContext context, Class<? extends Actor> clazz, Object obj) {
+    public static Object execute(ActorContext context, Class<? extends Actor> clazz, Object obj) throws Exception {
         ActorRef actorRef = context.actorOf(SpringContext.props(clazz));
+        Future<Object> ask = Patterns.ask(actorRef, obj, new Timeout(Duration.create(10L, TimeUnit.SECONDS)));
 
-        return Patterns.ask(actorRef, obj, new Timeout(Duration.create(30000L, TimeUnit.SECONDS)));
+        return Await.result(ask, Duration.apply(10L, TimeUnit.SECONDS));
     }
 
 }

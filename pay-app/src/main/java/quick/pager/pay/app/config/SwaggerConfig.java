@@ -2,7 +2,6 @@ package quick.pager.pay.app.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.web.context.request.async.DeferredResult;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
@@ -19,7 +18,6 @@ import static springfox.documentation.builders.PathSelectors.any;
  * @author siguiyang
  */
 @Configuration
-@Profile({"dev", "test", "uat"})
 @EnableSwagger2
 public class SwaggerConfig {
     @Bean

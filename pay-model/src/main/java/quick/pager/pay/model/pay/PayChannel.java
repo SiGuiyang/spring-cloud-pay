@@ -25,27 +25,19 @@ public class PayChannel extends IModel {
      */
     private String channelName;
     /**
-     * 支付配置AppId
+     * 支付配置AppId <br />
+     * 微信公众号支付需要的openId <br />
+     * 支付商户mchId，这里的值是第三方提供的支付商户渠道，例如：支付宝，微信提供的mchId<br />
+     * 支付密钥 <br />
+     * 支付公钥 <br />
+     * <p>
+     * {"appId":"","openId":"","mchId":"","secureKey":"","pubKey":""}
      */
-    private String appId;
+    private String payParams;
     /**
-     * 微信公众号支付需要的openId
+     * Spring cloud 服务名称
      */
-    private String openId;
-    /**
-     * 支付商户mchId <br />
-     * 这里的值是第三方提供的支付商户渠道 <br />
-     * 例如：支付宝，微信提供的mchId <br />
-     */
-    private String mchId;
-    /**
-     * 支付密钥
-     */
-    private String secureKey;
-    /**
-     * 支付公钥
-     */
-    public String pubKey;
+    private String serviceId;
     /**
      * 是否是当前节点<br />
      * true: 当前，反之亦然
@@ -56,6 +48,10 @@ public class PayChannel extends IModel {
      * true: 可用，反之亦然
      */
     private Boolean currentEnable;
+    /**
+     * 版本控制
+     */
+    private String version;
     /**
      * 支付渠道费率<br />
      * 百分比

@@ -5,7 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-import quick.pager.pay.dto.pay.ChannelDTO;
+import quick.pager.pay.app.dto.ChannelDTO;
+import quick.pager.pay.model.pay.PayChannel;
 
 /**
  * channel 支付渠道 actor
@@ -18,7 +19,9 @@ public class ChannelActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder().match(ChannelDTO.class, channelDTO -> {
             log.info("进入选择渠道。。。");
-
+            PayChannel channel = new PayChannel();
+            channel.setServiceId("pay-weixin");
+            sender().tell(channel, self());
 
         }).build();
     }
