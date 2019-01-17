@@ -152,6 +152,7 @@
         <module>pay-app</module>
         <module>pay-common</module>
         <module>pay-config</module>
+        <module>pay-channel</module>
         <module>pay-model</module>
         <module>pay-server</module>
         <module>pay-weixin</module>

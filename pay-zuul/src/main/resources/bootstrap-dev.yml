@@ -1,6 +1,3 @@
-spring:
-  application:
-    name: pay-zuul
 eureka:
   client:
     service-url:

@@ -44,7 +44,7 @@ public class ActorExecutor {
         builder.append(actorName).append(UUID.randomUUID().toString().replace("-", "0").toUpperCase());
 
         ActorRef actorRef = SpringContext.getActorRef(requireType, builder.toString());
-        Future<Object> future = Patterns.ask(actorRef, dto, new Timeout(Duration.create(30000L, TimeUnit.SECONDS)));
+        Future<Object> future = Patterns.ask(actorRef, dto, new Timeout(Duration.create(60L, TimeUnit.SECONDS)));
         Future<T> f = future.map(new Mapper<Object, T>() {
             @Override
             public T apply(Object parameter) {
@@ -72,9 +72,9 @@ public class ActorExecutor {
      */
     public static Object execute(ActorContext context, Class<? extends Actor> clazz, Object obj) throws Exception {
         ActorRef actorRef = context.actorOf(SpringContext.props(clazz));
-        Future<Object> ask = Patterns.ask(actorRef, obj, new Timeout(Duration.create(10L, TimeUnit.SECONDS)));
+        Future<Object> ask = Patterns.ask(actorRef, obj, new Timeout(Duration.create(60L, TimeUnit.SECONDS)));
 
-        return Await.result(ask, Duration.apply(10L, TimeUnit.SECONDS));
+        return Await.result(ask, Duration.apply(60L, TimeUnit.SECONDS));
     }
 
 }

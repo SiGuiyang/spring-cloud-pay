@@ -1,0 +1,18 @@
+
+spring:
+#  cloud:
+#    config:
+#      uri: http://localhost:8099/
+#      label: master
+#      profile: dev
+  application:
+    name: pay-channel
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info
+server:
+  port: 8093

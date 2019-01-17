@@ -1,10 +1,17 @@
 
 server:
   port: 8099
+spring:
+  application:
+    name: pay-zuul
 
 zuul:
   routes:
-    users:
-      path: /test/**
-      serviceId: https://www.baidu.com/
+    pay-app:
+      path: /cloud/**
+      serviceId: pay-app
+      stripPrefix: false
+    pay-channel:
+      path: /channel/**
+      serviceId: pay-channel
       stripPrefix: false
