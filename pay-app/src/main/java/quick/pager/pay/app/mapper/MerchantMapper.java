@@ -1,10 +1,11 @@
 package quick.pager.pay.app.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import quick.pager.pay.common.mapper.IMapper;
 import quick.pager.pay.model.merchant.Merchant;
 
-
+@Mapper
 public interface MerchantMapper extends IMapper<Long, Merchant> {
 
     /**

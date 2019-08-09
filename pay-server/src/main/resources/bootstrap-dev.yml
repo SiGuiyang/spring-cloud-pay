@@ -1,10 +1,5 @@
 
 spring:
-#  cloud:
-#    config:
-#      uri: http://localhost:8099/
-#      label: master
-#      profile: dev
   application:
     name: pay-server
 

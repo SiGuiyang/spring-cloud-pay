@@ -1,14 +1,15 @@
 
 spring:
-#  cloud:
-#    config:
-#      uri: http://localhost:8099/
-#      label: master
-#      profile: dev
   application:
     name: pay-channel
+  profiles:
+    active: dev
 
-
+mybatis:
+  mapper-locations: classpath:*quick/pager/pay/channel/mapper/*.xml
+  type-aliases-package: quick.pager.pay.model
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
 management:
   endpoints:
     web:

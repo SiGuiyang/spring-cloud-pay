@@ -1,11 +1,13 @@
 package quick.pager.pay.channel.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import quick.pager.pay.common.mapper.IMapper;
 import quick.pager.pay.model.common.SystemConfig;
 
 import java.util.List;
 
+@Mapper
 public interface SystemConfigMapper extends IMapper<Long, SystemConfig> {
 
     /**

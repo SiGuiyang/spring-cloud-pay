@@ -2,13 +2,10 @@ server:
   port: 8091
 
 spring:
-#  cloud:
-#    config:
-#      uri: http://localhost:8099/
-#      label: master
-#      profile: dev
   application:
     name: pay-alipay
+  profiles:
+    active: dev
 
 
 management:

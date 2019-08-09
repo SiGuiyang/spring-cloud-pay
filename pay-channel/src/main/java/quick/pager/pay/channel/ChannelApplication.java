@@ -1,18 +1,14 @@
 package quick.pager.pay.channel;
 
-//import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootApplication
-@EnableEurekaClient
-@EnableCircuitBreaker
-//@MapperScan(basePackages={"quick.pager.pay.mapper.common","quick.pager.pay.mapper.merchant","quick.pager.pay.mapper.pay"})
+@SpringCloudApplication
+@MapperScan(basePackages={"quick.pager.pay.channel.mapper"})
 public class ChannelApplication {
 
 	public static void main(String[] args) {

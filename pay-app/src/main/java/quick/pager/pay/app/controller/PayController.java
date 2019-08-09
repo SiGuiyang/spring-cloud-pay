@@ -1,8 +1,6 @@
 package quick.pager.pay.app.controller;
 
 import cn.hutool.core.util.ReUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -31,7 +29,6 @@ import quick.pager.pay.response.Response;
  * @author siguiyang
  */
 @Controller
-@Api(description = "支付相关接口")
 public class PayController {
 
     @Autowired
@@ -42,7 +39,6 @@ public class PayController {
      */
     @RequestMapping("/cloud/pay")
     @ResponseBody
-    @ApiOperation("支付接口")
     public DeferredResult<Response> pay(PayRequest request) {
         // 验证入参
 //        verifyRequest(request);
@@ -83,7 +79,6 @@ public class PayController {
      */
     @RequestMapping("/cloud/refund")
     @ResponseBody
-    @ApiOperation("退款接口")
     public DeferredResult refund(@RequestBody RefundRequest request) {
         return null;
     }
@@ -93,7 +88,6 @@ public class PayController {
      */
     @RequestMapping("/cloud/queryOrder")
     @ResponseBody
-    @ApiOperation("订单查询接口")
     public DeferredResult queryOrder(@RequestBody QueryOrderRequest request) {
         return null;
     }

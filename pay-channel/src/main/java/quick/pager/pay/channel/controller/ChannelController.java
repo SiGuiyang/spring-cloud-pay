@@ -1,7 +1,5 @@
 package quick.pager.pay.channel.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,11 +13,14 @@ import quick.pager.pay.response.Response;
  * @author siguiyang
  */
 @RestController
-@Api(description = "支付相关接口")
 public class ChannelController {
 
 
-    @ApiOperation("支付渠道选择")
+    /**
+     * 支付渠道选择
+     * @param request
+     * @return
+     */
     @PostMapping("/channel/query")
     public Response<PayChannel> queryChannel(@RequestBody ChannelRequest request) {
         System.out.println("支付渠道选择");

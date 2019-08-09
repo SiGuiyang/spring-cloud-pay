@@ -10,12 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pay-model</artifactId>
-
+    <version>${pager.pay}</version>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.22</version>
         </dependency>
 
         <dependency>
