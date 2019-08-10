@@ -30,6 +30,8 @@ public class PayRequest implements Serializable {
     private String bankCode;
     @ApiModelProperty(value = "支付类型", name = "payType")
     private String payType;
+    @ApiModelProperty(value = "支付主题", name = "body")
+    private String body;
     @ApiModelProperty(value = "支付时时间戳", name = "timestamp")
     private String timestamp;
     @ApiModelProperty(value = "签名类型", name = "signType")

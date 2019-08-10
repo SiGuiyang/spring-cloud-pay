@@ -21,6 +21,8 @@ public enum ResponseStatus {
     ALIPAY_REQUEST_TYPE_EXCEPTION(211, "请求支付宝入参类型不匹配"),
     WEIXIN_REQUEST_TYPE_EXCEPTION(212, "请求微信支付入参类型不匹配"),
 
+    PAY_CHANNEL_EXCEPTION(213,"支付渠道异常"),
+
     UNKNOWN_CHANNEL_CENTER(1000, "未知支付中心"),
     UNKNOWN_ROLE(1001, "未知角色"),
     UNKNOWN_SIGN(2001, "签名不通过"),
@@ -34,15 +36,19 @@ public enum ResponseStatus {
     UNKNOWN_PAY_SIGN_TYPE(3007, "未知支付签名"),
     UNKNOWN_PAY_TIMESTAMP(3008, "未知支付时间戳"),
     UNKNOWN_PAY_TYPE(3009, "未知支付类型"),
-    UNKNOWN_PAY_CHANNEL(3010,"未知支付渠道"),
+    UNKNOWN_PAY_CHANNEL(3010, "未知支付渠道"),
     PAY_SIGN_NOT_CORRECT(4000, "签名不正确"),
     PAY_OPENID_ERROR(4001, "公众号openId失效"),
-    PAY_WECHAT_FAIL(4002,"微信支付失败"),
-    PAY_WECHAT_COMMUNICATION(4003,"微信支付通讯异常"),
-    CHECK_PARAMS_SIGN(5000,"签名为空"),
-    CHECK_PARAMS_TIMESTAMP(5001,"请求时间戳为空"),
-    CHECK_PARAMS_NONCE_STR(5002,"请求唯一标志为空"),
-    CHECK_PARAMS_ORDER_CODE(5003,"请求平台订单号为空");
+    PAY_WECHAT_FAIL(4002, "微信支付失败"),
+    PAY_WECHAT_COMMUNICATION(4003, "微信支付通讯异常"),
+    CHECK_PARAMS_SIGN(5000, "签名为空"),
+    CHECK_PARAMS_TIMESTAMP(5001, "请求时间戳为空"),
+    CHECK_PARAMS_NONCE_STR(5002, "请求唯一标志为空"),
+    CHECK_PARAMS_ORDER_CODE(5003, "请求平台订单号为空"),
+    MERCHANT_REVIEW(5004, "商户账号正在审核中"),
+    MERCHANT_REVIEW_SUCCESS(5005, "商户账号审核成功"),
+    MERCHANT_REVIEW_FAILURE(5006, "商户账号审核拒绝"),
+    MERCHANT_ACCOUNT_CANCELLATION(5007, "商户账号已被注销");
 
     public int code;
 

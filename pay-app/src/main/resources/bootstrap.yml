@@ -24,6 +24,3 @@ mybatis:
   type-aliases-package: quick.pager.pay.model
   configuration:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-logging:
-  level:
-    org.springframework: debug

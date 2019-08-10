@@ -94,8 +94,7 @@ public class PayService {
 
         PayResponse response = new PayResponse();
         String result = restTemplate.postForObject(url, message, String.class);
-
-        System.out.println(result);
+        log.info("支付返回结果 result = {}", result);
         return response;
     }
 }

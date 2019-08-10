@@ -10,14 +10,13 @@
     <result column="update_user_name" jdbcType="VARCHAR" property="updateUserName" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, channel_center_name, pay_type, server_status, create_user_name, update_user_name, 
-    create_time, update_time, delete_status
+    id, channel_center_name, pay_type, server_status, create_user_name, update_user_name,
+    create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_pay_channel_center
     where id = #{id,jdbcType=BIGINT}
@@ -50,9 +49,6 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="deleteStatus != null">
-        delete_status,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -78,9 +74,6 @@
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deleteStatus != null">
-        #{deleteStatus,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -108,9 +101,6 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deleteStatus != null">
-        delete_status = #{deleteStatus,jdbcType=BIT},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -120,9 +110,8 @@
       <include refid="Base_Column_List"/>
       from t_pay_channel_center
       <where>
-        delete_status = 0
         <if test="channelCenterName != null">
-          and channel_center_name = #{channelCenterName,jdbcType=VARCHAR}
+          channel_center_name = #{channelCenterName,jdbcType=VARCHAR}
         </if>
         <if test="payType != null and payType != ''">
           and pay_type = #{payType,jdbcType=VARCHAR}

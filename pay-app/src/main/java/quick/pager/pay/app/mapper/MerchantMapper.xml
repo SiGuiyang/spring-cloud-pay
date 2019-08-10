@@ -22,13 +22,12 @@
         <result column="license" jdbcType="VARCHAR" property="license"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
-        <result column="delete_status" jdbcType="BIT" property="deleteStatus"/>
         <result column="high_quality" jdbcType="INTEGER" property="highQuality"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, merchant_name, password, server_status, contract_name, merchant_no, mobile, bank_name, 
+    id, merchant_name, password, server_status, contract_name, merchant_no, mobile, bank_name,
     bank_num, rate, deduction, id_card, id_card_front, id_card_behind, public_key,
-    private_key, address, license, create_time, update_time, delete_status, high_quality
+    private_key, address, license, create_time, update_time, high_quality
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
@@ -100,9 +99,6 @@
             <if test="updateTime != null">
                 update_time,
             </if>
-            <if test="deleteStatus != null">
-                delete_status,
-            </if>
             <if test="highQuality != null">
                 high_quality,
             </if>
@@ -167,9 +163,6 @@
             </if>
             <if test="updateTime != null">
                 #{updateTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="deleteStatus != null">
-                #{deleteStatus,jdbcType=BIT},
             </if>
             <if test="highQuality != null">
                 #{highQuality,jdbcType=INTEGER},
@@ -236,9 +229,6 @@
             <if test="updateTime != null">
                 update_time = #{updateTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="deleteStatus != null">
-                delete_status = #{deleteStatus,jdbcType=BIT},
-            </if>
             <if test="highQuality != null">
                 high_quality = #{highQuality,jdbcType=INTEGER},
             </if>
@@ -251,9 +241,8 @@
         <include refid="Base_Column_List"/>
         from t_merchant
         <where>
-            delete_status = 0
             <if test="merchantNo != null">
-                and merchant_no = #{merchantNo,jdbcType=VARCHAR}
+                merchant_no = #{merchantNo,jdbcType=VARCHAR}
             </if>
         </where>
     </select>

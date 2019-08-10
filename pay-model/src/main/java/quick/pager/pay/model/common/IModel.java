@@ -22,12 +22,6 @@ public class IModel implements Serializable {
      * 更新时间
      */
     private Date updateTime;
-    /**
-     * 删除标志<br />
-     * true 删除<br />
-     * false 未删除<br />
-     */
-    private Boolean deleteStatus;
 
     public Long getId() {
         return id;
@@ -51,13 +45,5 @@ public class IModel implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Boolean getDeleteStatus() {
-        return deleteStatus;
-    }
-
-    public void setDeleteStatus(Boolean deleteStatus) {
-        this.deleteStatus = deleteStatus;
     }
 }

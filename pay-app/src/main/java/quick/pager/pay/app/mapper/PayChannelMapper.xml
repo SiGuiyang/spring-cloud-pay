@@ -15,14 +15,13 @@
     <result column="deduction" jdbcType="DECIMAL" property="deduction" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
   </resultMap>
   <sql id="Base_Column_List">
     id, pay_channel_center_id, channel_name, app_id, open_id, mch_id, secure_key, current_node,
-    current_enable, rate, deduction, create_time, update_time, delete_status
+    current_enable, rate, deduction, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_pay_channel
     where id = #{id,jdbcType=BIGINT}
@@ -70,9 +69,6 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="deleteStatus != null">
-        delete_status,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -113,9 +109,6 @@
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deleteStatus != null">
-        #{deleteStatus,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -158,9 +151,6 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deleteStatus != null">
-        delete_status = #{deleteStatus,jdbcType=BIT},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -170,9 +160,8 @@
       <include refid="Base_Column_List"/>
       from t_pay_channel
       <where>
-        delete_status = 0
         <if test="payChannelCenterId != null">
-          and pay_channel_center_id = #{payChannelCenterId,jdbcType=BIGINT}
+          pay_channel_center_id = #{payChannelCenterId,jdbcType=BIGINT}
         </if>
         <if test="channelName != null and channelName != ''">
           and channel_name = #{channelName,jdbcType=VARCHAR}

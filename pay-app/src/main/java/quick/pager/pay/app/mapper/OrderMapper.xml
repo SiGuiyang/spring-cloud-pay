@@ -21,15 +21,14 @@
     <result column="deduction_amount" jdbcType="DECIMAL" property="deductionAmount" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, merchant_no, pay_type, order_code, trade_code, merchant_order_code, notify_url, 
-    pay_body, pay_client_id, pay_jump_url, pay_status, notification_status, trade_status, 
-    trade_amount, rate_amount, deduction_amount, create_time, update_time, delete_status
+    id, merchant_no, pay_type, order_code, trade_code, merchant_order_code, notify_url,
+    pay_body, pay_client_id, pay_jump_url, pay_status, notification_status, trade_status,
+    trade_amount, rate_amount, deduction_amount, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_order
     where id = #{id,jdbcType=BIGINT}
@@ -92,9 +91,6 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="deleteStatus != null">
-        delete_status,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -150,9 +146,6 @@
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deleteStatus != null">
-        #{deleteStatus,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -211,9 +204,6 @@
       </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deleteStatus != null">
-        delete_status = #{deleteStatus,jdbcType=BIT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
