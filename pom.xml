@@ -16,7 +16,7 @@
         <spring-cloud.alibaba>0.9.0.RELEASE</spring-cloud.alibaba>
         <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
         <junit.version>4.12</junit.version>
-        <hutool.version>4.0.10</hutool.version>
+        <hutool.version>4.1.12</hutool.version>
         <fastjson.version>1.2.47</fastjson.version>
         <guava.version>20.0</guava.version>
         <qiniu.version>7.2.11</qiniu.version>
